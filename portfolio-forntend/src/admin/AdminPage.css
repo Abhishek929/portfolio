@@ -1,0 +1,37 @@
+.admin-dashboard {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f5f6fa; /* Light background for main content */
+}
+
+/* Sidebar takes fixed width */
+.sidebar-container {
+  width: 240px;
+  background-color: #1f2433;
+  color: white;
+  flex-shrink: 0;
+}
+
+/* Main area with header + content */
+.admin-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header sits at top */
+.admin-main header {
+  flex-shrink: 0;
+}
+
+/* Main content area */
+.admin-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f5f6fa;
+}
+
+.admin-content h2,
+.admin-content p {
+  color: #333;
+}

@@ -1,0 +1,58 @@
+.edit-user-container {
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+}
+
+.back-btn {
+  padding: 8px 14px;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+.back-btn:hover {
+  background-color: #666;
+}
+
+.edit-user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.edit-user-form label {
+  font-weight: bold;
+}
+
+.edit-user-form input,
+.edit-user-form select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.save-btn {
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.save-btn:hover {
+  background-color: #45a049;
+}
+
+.error-text {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.edit-user-container h2,
+label,
+input {
+  color: #333;
+}

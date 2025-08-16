@@ -1,0 +1,50 @@
+.navbar {
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 30px;
+  align-items: center;
+  border-bottom: 1px solid #333;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 32px;
+  margin-right: 10px;
+}
+
+.brand {
+  font-size: 14px;
+}
+
+.brand .white {
+  color: white;
+}
+
+.brand .gray {
+  color: #ccc;
+}
+
+.brand .yellow {
+  color: #ffc73a;
+}
+
+.navbar-right a {
+  margin-left: 20px;
+  font-size: 14px;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+.navbar-right a:hover {
+  color: #ccc;
+}
+
+.navbar-right .active {
+  color: #6366f1;
+}

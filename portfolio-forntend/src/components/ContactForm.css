@@ -1,0 +1,113 @@
+.contact-form {
+  display: flex;
+  justify-content: space-between;
+  padding: 80px 60px;
+  background: linear-gradient(90deg, #0d0d0d, #442b7e);
+  color: white;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.form-left {
+  flex: 1;
+  min-width: 300px;
+}
+
+.form-left h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.form-left h4 {
+  font-size: 18px;
+  margin-bottom: 32px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+input,
+textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 5px;
+  font-size: 15px;
+  color: white;
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px;
+  background-color: #b084f7;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  color: black;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #a170f5;
+}
+
+.form-right {
+  flex: 0.5;
+  min-width: 260px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  font-size: 14px;
+  color: #e0e0e0;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-form {
+    flex-direction: column;
+    padding: 60px 30px;
+  }
+
+  .form-right {
+    justify-content: flex-start;
+  }
+}
+
+.form-image {
+  background: linear-gradient(90deg, #0d0d0d, #442b7e);
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.form-image img {
+  max-width: 90%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.success-message {
+  padding: 20px;
+  background-color: #e6ffe6;
+  color: green;
+  border: 1px solid #b3ffb3;
+  border-radius: 6px;
+}
