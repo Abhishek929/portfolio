@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 8080;
 
 // Middleware
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({ origin: "https://portfolio-ui-phi.vercel.app/" }));
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     next();
