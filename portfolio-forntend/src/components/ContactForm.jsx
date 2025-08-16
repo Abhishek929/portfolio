@@ -28,7 +28,7 @@ const ContactForm = () => {
     setError('');
 
     try {
-      const response = await fetch("http://localhost:8080/api/contact/create", {
+      const response = await fetch("https://portfolio-api-eight-green.vercel.app/api/contact/create", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
