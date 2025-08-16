@@ -46,6 +46,9 @@ textarea {
   color: white;
   outline: none;
 }
+.form-left input {
+  color: #e0e0e0;
+}
 
 textarea {
   resize: vertical;
