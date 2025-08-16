@@ -186,13 +186,28 @@ export const GetUserById = async (req, res) => {
 
 // Update user
 export const UpdateUser = async (req, res) => {
-    try {
-        const user = await Auth.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        if (!user) return res.status(404).json({ message: "User not found" });
-        res.json(user);
-    } catch (err) {
-        res.status(500).json({ error: err.message });
+  try {
+    // Find the user by ID
+    const user = await Auth.findById(req.params.id);
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    // Update allowed fields
+    const { name, email, role } = req.body;
+
+    if (name) user.name = name;
+    if (email) user.email = email;
+
+    // Role update only if requester is admin
+    if (role && req.user?.role === "admin") {
+      user.role = role;
     }
+
+    await user.save();
+
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 };
 
 // Delete user
