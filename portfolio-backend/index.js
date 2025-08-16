@@ -26,6 +26,10 @@ app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/contact", contactRoutes);
 
+app.get("/", (req, res) => {
+    res.send("Welcome to the Portfolio Backend API");
+});
+
 // Start server
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
