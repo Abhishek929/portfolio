@@ -40,17 +40,24 @@ const NotificationsPage = () => {
             <h1>Notifications Page</h1>
 
             <div className="notifications-list">
-                <div className="notification-card">
-                    <div className="notification-title">New User Registered</div>
-                    <div className="notification-message">John Doe just signed up.</div>
-                    <div className="notification-date">Aug 18, 2025</div>
-                </div>
-
-                <div className="notification-card">
-                    <div className="notification-title">Payment Received</div>
-                    <div className="notification-message">₹1200 payment from Jane Smith.</div>
-                    <div className="notification-date">Aug 17, 2025</div>
-                </div>
+                {[
+                    {
+                        title: "New User Registered",
+                        message: "John Doe just signed up.",
+                        date: "Aug 18, 2025"
+                     },
+                     {
+                        title: "Payment Received",
+                        message: "₹1200 payment from Jane Smith.",
+                        date: "Aug 17, 2025"
+                    }
+                ].map((notification, idx) => (
+                    <div className="notification-card" key={idx}>
+                        <div className="notification-title">{notification.title}</div>
+                        <div className="notification-message">{notification.message}</div>
+                        <div className="notification-date">{notification.date}</div>
+                    </div>
+                ))}
             </div>
         </div>
       </div>
