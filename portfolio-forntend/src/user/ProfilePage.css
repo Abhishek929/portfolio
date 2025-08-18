@@ -5,16 +5,6 @@
   background-color: #f9fafb; /* light gray background */
 }
 
-/* Sidebar */
-.sidebar-container {
-  width: 260px;
-  background-color: #1f2937; /* dark gray */
-  min-height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
 /* Main area */
 .profile-main {
   margin-left: 260px; /* match sidebar width */
