@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   background-color: #1f2433; /* Dark tone to match sidebar */
-  padding: 12px 20px;
+  padding: 10px 20px;
   color: #fff;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
