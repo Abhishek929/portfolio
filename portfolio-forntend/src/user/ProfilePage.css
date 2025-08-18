@@ -42,10 +42,11 @@
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  color: #000;
 }
 
-.profile-username span {
-  color: #3b82f6; /* blue-500 */
+.user-email {
+  color: #302f2f;
 }
 
 /* Section header */
@@ -75,6 +76,7 @@
 
 .details-value {
   font-weight: 500;
+  color: #000;
 }
 
 /* Button */

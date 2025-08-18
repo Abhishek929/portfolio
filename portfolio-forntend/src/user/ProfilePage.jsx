@@ -52,9 +52,9 @@ export default function ProfilePage() {
             <div className="flex flex-col items-center">
               <img src={user.image || ProfileImage } alt="Profile" />
               <h2 className="profile-username">
-                {user.username || "User Name"} <span>✔</span>
+                {user.username || "User Name"}
               </h2>
-              <p className="text-gray-600">{user.email}</p>
+              <p className="user-email">{user.email}</p>
             </div>
 
             <div className="mt-6 border rounded-xl overflow-hidden">
