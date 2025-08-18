@@ -36,6 +36,20 @@ const NotificationsPage = () => {
       <div className="main-content">
         <AdminHeader />
         <h1>Notifications Page</h1>
+
+        <div className="notifications-list">
+            <div className="notification-card">
+                <div className="notification-title">New User Registered</div>
+                <div className="notification-message">John Doe just signed up.</div>
+                <div className="notification-date">Aug 18, 2025</div>
+            </div>
+
+            <div className="notification-card">
+                <div className="notification-title">Payment Received</div>
+                <div className="notification-message">₹1200 payment from Jane Smith.</div>
+                <div className="notification-date">Aug 17, 2025</div>
+            </div>
+        </div>
       </div>
     </div>
   );

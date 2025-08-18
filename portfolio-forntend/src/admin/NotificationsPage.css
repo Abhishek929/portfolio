@@ -1,0 +1,102 @@
+/* Notifications Page Layout */
+.admin-notifications {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f9fafb;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Sidebar styling (same as before) */
+.sidebar-container {
+  width: 250px;
+  background-color: #111827;
+  color: white;
+  padding: 20px 0;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+/* Main content */
+.main-content {
+  margin-left: 250px;
+  padding: 20px 30px;
+  flex: 1;
+  background-color: #f3f4f6;
+}
+
+/* Heading */
+.main-content h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 20px;
+}
+
+/* Notification card list */
+.notifications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Each notification card */
+.notification-card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 15px 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid #2563eb; /* blue accent */
+  transition: transform 0.2s ease;
+}
+
+.notification-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Notification title */
+.notification-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 5px;
+}
+
+/* Notification message */
+.notification-message {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+/* Notification date */
+.notification-date {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin-top: 8px;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .sidebar-container {
+    width: 200px;
+  }
+  .main-content {
+    margin-left: 200px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .sidebar-container {
+    position: absolute;
+    left: -250px;
+    transition: left 0.3s ease;
+  }
+  .sidebar-container.active {
+    left: 0;
+  }
+  .main-content {
+    margin-left: 0;
+  }
+}
