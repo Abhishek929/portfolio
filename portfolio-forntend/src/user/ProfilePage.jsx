@@ -21,14 +21,18 @@ export default function ProfilePage() {
 
   const fetchProfile = async () => {
     try {
-      const userId = localStorage.getItem("user"); // 👈 stored after login
-      console.log("user id", userId);
+      const userId = localStorage.getItem("user");
       if (!userId) throw new Error("User not logged in");
-      console.log("user id 2", userId.id);
+
+      const parsedUser = JSON.parse(userId);
+      const token = localStorage.getItem("token");
+      
       const res = await fetch(
-        `https://portfolio-api-eight-green.vercel.app/api/auth/get-user/${userId.id}`,
+        `https://portfolio-api-eight-green.vercel.app/api/auth/get-user/${parsedUser._id}`,
         {
-          headers: { Authorization: `Bearer ${userId}` }
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
       if (!res.ok) throw new Error("Failed to load profile");
