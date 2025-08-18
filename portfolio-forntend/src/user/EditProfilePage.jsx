@@ -79,120 +79,108 @@ export default function EditProfilePage() {
 
   return (
     <div className="profile-dashboard flex">
-      {/* Sidebar */}
-      <div className="sidebar-container">
-        <Sidebar />
-      </div>
-
-      {/* Main */}
-      <div className="profile-main flex-1">
-        <AdminHeader />
-        <div className="p-6 max-w-2xl mx-auto">
-          <ToastContainer />
-          <h2 className="text-2xl font-bold mb-4">Edit Profile</h2>
-          <form
-            onSubmit={handleSubmit}
-            className="bg-white p-6 rounded-xl shadow-md space-y-4"
-          >
-            <div>
-              <label className="block text-sm font-medium">First Name</label>
-              <input
-                type="text"
-                name="firstname"
-                value={formData.firstname}
-                onChange={handleChange}
-                className="w-full border rounded-lg px-3 py-2"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium">Last Name</label>
-              <input
-                type="text"
-                name="lastname"
-                value={formData.lastname}
-                onChange={handleChange}
-                className="w-full border rounded-lg px-3 py-2"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium">Email</label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full border rounded-lg px-3 py-2"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium">Phone</label>
-              <input
-                type="text"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                className="w-full border rounded-lg px-3 py-2"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium">Date of Birth</label>
-              <input
-                type="date"
-                name="dob"
-                value={formData.dob}
-                onChange={handleChange}
-                className="w-full border rounded-lg px-3 py-2"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium">Gender</label>
-              <select
-                name="gender"
-                value={formData.gender}
-                onChange={handleChange}
-                className="w-full border rounded-lg px-3 py-2"
-              >
-                <option value="">Select Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium">Nationality</label>
-              <input
-                type="text"
-                name="nationality"
-                value={formData.nationality}
-                onChange={handleChange}
-                className="w-full border rounded-lg px-3 py-2"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium">Address</label>
-              <textarea
-                name="address"
-                value={formData.address}
-                onChange={handleChange}
-                className="w-full border rounded-lg px-3 py-2"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
-            >
-              Save Changes
-            </button>
-          </form>
+        {/* Sidebar */}
+        <div className="sidebar-container">
+            <Sidebar />
         </div>
-      </div>
+
+        {/* Main */}
+        <div className="profile-main flex-1">
+            <AdminHeader />
+            <div className="profile-content">
+                <ToastContainer />
+                <div className="profile-card">
+                    <h2 className="text-2xl font-bold mb-4">Edit Profile</h2>
+                    <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow-md space-y-4">
+                        <div>
+                            <label className="block text-sm font-medium">First Name</label>
+                            <input type="text" name="firstname" value={formData.firstname} onChange={handleChange} className="w-full border rounded-lg px-3 py-2"/>
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium">Last Name</label>
+                            <input
+                                type="text"
+                                name="lastname"
+                                value={formData.lastname}
+                                onChange={handleChange}
+                                className="w-full border rounded-lg px-3 py-2"
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium">Email</label>
+                            <input
+                                type="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                className="w-full border rounded-lg px-3 py-2"
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium">Phone</label>
+                            <input
+                                type="text"
+                                name="phone"
+                                value={formData.phone}
+                                onChange={handleChange}
+                                className="w-full border rounded-lg px-3 py-2"
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium">Date of Birth</label>
+                            <input
+                                type="date"
+                                name="dob"
+                                value={formData.dob}
+                                onChange={handleChange}
+                                className="w-full border rounded-lg px-3 py-2"
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium">Gender</label>
+                            <select
+                                name="gender"
+                                value={formData.gender}
+                                onChange={handleChange}
+                                className="w-full border rounded-lg px-3 py-2"
+                            >
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium">Nationality</label>
+                            <input
+                                type="text"
+                                name="nationality"
+                                value={formData.nationality}
+                                onChange={handleChange}
+                                className="w-full border rounded-lg px-3 py-2"
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium">Address</label>
+                            <textarea
+                                name="address"
+                                value={formData.address}
+                                onChange={handleChange}
+                                className="w-full border rounded-lg px-3 py-2"
+                            />
+                        </div>
+
+                        <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
   );
 }

@@ -1,41 +1,71 @@
-/* Form card */
-.profile-form {
-  background-color: #ffffff;
-  border-radius: 0.75rem; /* rounded-xl */
-  padding: 1.5rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+/* Main content */
+.profile-main {
+  display: flex;
+  flex-direction: column;
 }
 
-/* Input fields */
-.profile-form input,
-.profile-form select,
-.profile-form textarea {
+/* Profile content container */
+.profile-content {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
   width: 100%;
+}
+
+/* Profile card wrapper */
+.profile-card {
+  background: #ffffff;
+  border-radius: 1rem; /* rounded-xl */
+  padding: 2rem;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Inputs, selects, textareas */
+.profile-card input,
+.profile-card select,
+.profile-card textarea {
   border: 1px solid #d1d5db; /* gray-300 */
   border-radius: 0.5rem;
   padding: 0.5rem 0.75rem;
-  transition: all 0.2s ease-in-out;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
 }
 
-.profile-form input:focus,
-.profile-form select:focus,
-.profile-form textarea:focus {
+.profile-card input:focus,
+.profile-card select:focus,
+.profile-card textarea:focus {
   outline: none;
   border-color: #2563eb; /* blue-600 */
-  box-shadow: 0 0 0 2px rgba(37,99,235,0.2);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
 }
 
-/* Button */
-.profile-form button {
-  width: 100%;
-  background-color: #2563eb;
+/* Labels */
+.profile-card label {
+  color: #374151; /* gray-700 */
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+  display: block;
+  font-weight: 500;
+}
+
+/* Save button */
+.profile-card button {
+  background-color: #2563eb; /* blue-600 */
   color: #ffffff;
   font-weight: 500;
-  padding: 0.75rem;
+  border: none;
   border-radius: 0.5rem;
-  transition: background-color 0.2s ease-in-out;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-.profile-form button:hover {
+.profile-card button:hover {
   background-color: #1e40af; /* darker blue */
 }
