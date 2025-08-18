@@ -26,7 +26,7 @@ export default function ProfilePage() {
       if (!userId) throw new Error("User not logged in");
       console.log("user id 2", userId.id);
       const res = await fetch(
-        `https://portfolio-api-eight-green.vercel.app/api/auth/get-user/${user.id}`,
+        `https://portfolio-api-eight-green.vercel.app/api/auth/get-user/${userId.id}`,
         {
           headers: { Authorization: `Bearer ${userId}` }
         }
