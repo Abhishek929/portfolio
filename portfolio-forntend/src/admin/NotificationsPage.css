@@ -6,16 +6,6 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.admin-main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.notifications-list,
-h1 {
-    color: #000;
-}
 /* Sidebar styling (same as before) */
 .sidebar-container {
   width: 250px;
@@ -31,14 +21,16 @@ h1 {
 
 /* Main content */
 .main-content {
-  margin-left: 250px;
-  padding: 20px 30px;
-  flex: 1;
-  background-color: #f3f4f6;
+    margin-left: 250px;
+    padding: 20px 30px;
+    background-color: #f3f4f6;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Heading */
-.main-content h1 {
+h1 {
   font-size: 1.8rem;
   font-weight: 600;
   color: #111827;
@@ -50,6 +42,7 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  color: #000;
 }
 
 /* Each notification card */
