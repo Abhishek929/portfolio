@@ -204,7 +204,6 @@ export const UpdateUser = async (req, res) => {
 
     // Save the updated user 
     await user.save();
-    console.log("User updated:", user);
 
     // Return the updated user
     res.json(user);

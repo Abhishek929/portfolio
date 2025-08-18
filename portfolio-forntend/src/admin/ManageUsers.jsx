@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import './ManageUsers.css'
 import AdminHeader from './AdminHeader'
 import Sidebar from './Sidebar'
+import UserDefaultImage from '../assets/profile.png'
 
 export default function ManageUsers() {
   const [users, setUsers] = useState([])
@@ -98,7 +99,7 @@ export default function ManageUsers() {
                     <div className="user-card" key={user._id}>
                       {/* User Avatar */}
                       <img
-                        src={user.image || '../src/assets/profile.png'}
+                        src={user.image || UserDefaultImage }
                         alt={user.username}
                         className="user-avatar"
                       />
