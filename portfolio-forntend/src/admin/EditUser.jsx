@@ -18,7 +18,7 @@ export default function EditUser() {
 
   useEffect(() => {
     fetchUser()
-  })
+  }, [id])
 
   const fetchUser = async () => {
     try {
@@ -82,38 +82,16 @@ export default function EditUser() {
               {!loading && (
                 <form className="edit-user-form" onSubmit={handleSubmit}>
                   <label>Username</label>
-                  <input
-                    type="text"
-                    name="username"
-                    value={formData.username}
-                    onChange={handleChange}
-                    required
-                  />
-
+                  <input type="text" name="username" value={formData.username} onChange={handleChange} required/>
                   <label>Email</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                  />
-
+                  <input type="email" name="email" value={formData.email} onChange={handleChange} required/>
                   <label>Role</label>
-                  <select
-                    name="role"
-                    value={formData.role}
-                    onChange={handleChange}
-                    required
-                  >
+                  <select name="role" value={formData.role} onChange={handleChange} required>
                     <option value="">Select Role</option>
                     <option value="admin">Admin</option>
                     <option value="user">User</option>
                   </select>
-
-                  <button type="submit" className="save-btn">
-                    Update
-                  </button>
+                  <button type="submit" className="save-btn"> Update </button>
                 </form>
               )}
             </div>
