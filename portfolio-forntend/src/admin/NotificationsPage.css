@@ -2,33 +2,38 @@
 .admin-notifications {
   display: flex;
   min-height: 100vh;
-  background-color: #f9fafb;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f6fa;
 }
 
 /* Sidebar styling (same as before) */
 .sidebar-container {
-  width: 250px;
-  background-color: #111827;
+  width: 240px;
+  background-color: #1f2433;
   color: white;
-  padding: 20px 0;
-  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
+  flex-shrink: 0;
 }
 
 /* Main content */
 .main-content {
-  margin-left: 250px;
-  padding: 20px 30px;
   flex: 1;
-  background-color: #f3f4f6;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header sits at top */
+.main-content header {
+  flex-shrink: 0;
+}
+
+/* Main content area */
+.notification-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f5f6fa;
 }
 
 /* Heading */
-.main-content h1 {
+.notification-content h1 {
   font-size: 1.8rem;
   font-weight: 600;
   color: #111827;
