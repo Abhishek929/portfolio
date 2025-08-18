@@ -21,7 +21,7 @@ export default function ProfilePage() {
 
   const fetchProfile = async () => {
     try {
-      const userId = localStorage.getItem("token"); // 👈 stored after login
+      const userId = localStorage.getItem("user"); // 👈 stored after login
       console.log("user id", userId);
       if (!userId) throw new Error("User not logged in");
       console.log("user id 2", user.id);
