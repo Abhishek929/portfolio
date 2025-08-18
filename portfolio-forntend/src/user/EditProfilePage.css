@@ -1,0 +1,41 @@
+/* Form card */
+.profile-form {
+  background-color: #ffffff;
+  border-radius: 0.75rem; /* rounded-xl */
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+/* Input fields */
+.profile-form input,
+.profile-form select,
+.profile-form textarea {
+  width: 100%;
+  border: 1px solid #d1d5db; /* gray-300 */
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.profile-form input:focus,
+.profile-form select:focus,
+.profile-form textarea:focus {
+  outline: none;
+  border-color: #2563eb; /* blue-600 */
+  box-shadow: 0 0 0 2px rgba(37,99,235,0.2);
+}
+
+/* Button */
+.profile-form button {
+  width: 100%;
+  background-color: #2563eb;
+  color: #ffffff;
+  font-weight: 500;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.profile-form button:hover {
+  background-color: #1e40af; /* darker blue */
+}

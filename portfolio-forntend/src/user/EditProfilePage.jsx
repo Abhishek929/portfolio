@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Sidebar from "../admin/Sidebar";
 import AdminHeader from "../admin/AdminHeader";
 import { useParams, useNavigate } from "react-router-dom";
+import "./EditProfilePage.css";
 
 export default function EditProfilePage() {
   const [formData, setFormData] = useState({
