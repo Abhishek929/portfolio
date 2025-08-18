@@ -5,6 +5,7 @@ import Sidebar from "../admin/Sidebar";
 import AdminHeader from "../admin/AdminHeader";
 import { useParams, useNavigate } from "react-router-dom";
 import "./EditProfilePage.css";
+import ProfileImage from "../assets/profile.png";
 
 export default function EditProfilePage() {
   const [formData, setFormData] = useState({
@@ -92,63 +93,44 @@ export default function EditProfilePage() {
                 <div className="profile-card">
                     <h2 className="text-2xl font-bold mb-4">Edit Profile</h2>
                     <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow-md space-y-4">
+                        <div className="profile-avatar">
+                            <img src={formData.image || ProfileImage } alt="Profile" className="avatar-img"/>
+                            <label htmlFor="avatarUpload" className="avatar-edit">
+                                <i className="fas fa-pencil-alt"></i>
+                            </label>
+                            <input type="file" id="avatarUpload" accept="image/*" className="hidden" onChange={(e) =>
+                                setFormData({ ...formData, image: URL.createObjectURL(e.target.files[0]) })
+                                }
+                            />
+                        </div>
                         <div>
                             <label className="block text-sm font-medium">First Name</label>
-                            <input type="text" name="firstname" value={formData.firstname} onChange={handleChange} className="w-full border rounded-lg px-3 py-2"/>
+                            <input type="text" name="firstname" value={formData.firstname} onChange={handleChange} className="first-name-input"/>
                         </div>
 
                         <div>
                             <label className="block text-sm font-medium">Last Name</label>
-                            <input
-                                type="text"
-                                name="lastname"
-                                value={formData.lastname}
-                                onChange={handleChange}
-                                className="w-full border rounded-lg px-3 py-2"
-                            />
+                            <input type="text" name="lastname" value={formData.lastname} onChange={handleChange} className="last-name-input"/>
                         </div>
 
                         <div>
                             <label className="block text-sm font-medium">Email</label>
-                            <input
-                                type="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                className="w-full border rounded-lg px-3 py-2"
-                            />
+                            <input type="email" name="email" value={formData.email} onChange={handleChange} className="email-input"/>
                         </div>
 
                         <div>
                             <label className="block text-sm font-medium">Phone</label>
-                            <input
-                                type="text"
-                                name="phone"
-                                value={formData.phone}
-                                onChange={handleChange}
-                                className="w-full border rounded-lg px-3 py-2"
-                            />
+                            <input type="text" name="phone" value={formData.phone} onChange={handleChange} className="phone-input"/>
                         </div>
 
                         <div>
                             <label className="block text-sm font-medium">Date of Birth</label>
-                            <input
-                                type="date"
-                                name="dob"
-                                value={formData.dob}
-                                onChange={handleChange}
-                                className="w-full border rounded-lg px-3 py-2"
-                            />
+                            <input type="date" name="dob" value={formData.dob} onChange={handleChange} className="date-input"/>
                         </div>
 
                         <div>
                             <label className="block text-sm font-medium">Gender</label>
-                            <select
-                                name="gender"
-                                value={formData.gender}
-                                onChange={handleChange}
-                                className="w-full border rounded-lg px-3 py-2"
-                            >
+                            <select name="gender" value={formData.gender} onChange={handleChange} className="gender-select">
                                 <option value="">Select Gender</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
@@ -156,27 +138,11 @@ export default function EditProfilePage() {
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium">Nationality</label>
-                            <input
-                                type="text"
-                                name="nationality"
-                                value={formData.nationality}
-                                onChange={handleChange}
-                                className="w-full border rounded-lg px-3 py-2"
-                            />
-                        </div>
-
-                        <div>
                             <label className="block text-sm font-medium">Address</label>
-                            <textarea
-                                name="address"
-                                value={formData.address}
-                                onChange={handleChange}
-                                className="w-full border rounded-lg px-3 py-2"
-                            />
+                            <textarea name="address" value={formData.address} onChange={handleChange} className="address-textarea"/>
                         </div>
 
-                        <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">Save Changes</button>
+                        <button type="submit" className="save-button">Save Changes</button>
                     </form>
                 </div>
             </div>
