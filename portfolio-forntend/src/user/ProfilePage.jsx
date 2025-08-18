@@ -4,7 +4,8 @@ import "react-toastify/dist/ReactToastify.css";
 import "./ProfilePage.css";
 import Sidebar from "../admin/Sidebar";
 import AdminHeader from "../admin/AdminHeader";
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
+import ProfileImage from "../assets/profile.png"; 
 
 export default function ProfilePage() {
   const [user, setUser] = useState(null);
@@ -47,8 +48,73 @@ export default function ProfilePage() {
         <AdminHeader />
         <div className="profile-content">
           <ToastContainer />
-          <h2 className="text-center">Profile Details</h2>
+          {/* Profile Card */}
           <div className="min-h-screen flex items-center justify-center bg-gray-100">
+            <div className="bg-white shadow-lg rounded-2xl p-6 max-w-lg w-full">
+              
+              {/* Top Section */}
+              <div className="flex flex-col items-center">
+                <img
+                  src={user.image || ProfileImage}
+                  alt="Profile"
+                  className="w-32 h-32 rounded-full object-cover mb-4 border-4 border-blue-500"
+                />
+                <h2 className="text-2xl font-semibold flex items-center gap-2">
+                  {user.username || "User Name"}
+                  <span className="text-blue-500">✔</span>
+                </h2>
+                <p className="text-gray-600">{user.email}</p>
+              </div>
+
+              {/* Personal Details */}
+              <div className="mt-6 border rounded-xl overflow-hidden">
+                <div className="bg-gray-50 px-4 py-2 border-b">
+                  <h3 className="font-semibold text-gray-700">Personal details</h3>
+                </div>
+                <div className="divide-y">
+                  <div className="flex justify-between px-4 py-2">
+                    <span className="text-gray-500">Full Name:</span>
+                    <span className="font-medium">{user.firstname} {user.lastname}</span>
+                  </div>
+                  <div className="flex justify-between px-4 py-2">
+                    <span className="text-gray-500">Date of Birth:</span>
+                    <span>{user.dob ? new Date(user.dob).toLocaleDateString() : "-"}</span>
+                  </div>
+                  <div className="flex justify-between px-4 py-2">
+                    <span className="text-gray-500">Gender:</span>
+                    <span>{user.gender || "-"}</span>
+                  </div>
+                  <div className="flex justify-between px-4 py-2">
+                    <span className="text-gray-500">Nationality:</span>
+                    <span>{user.nationality || "-"}</span>
+                  </div>
+                  <div className="flex justify-between px-4 py-2">
+                    <span className="text-gray-500">Address:</span>
+                    <span>{user.address || "-"}</span>
+                  </div>
+                  <div className="flex justify-between px-4 py-2">
+                    <span className="text-gray-500">Phone Number:</span>
+                    <span>{user.phone || "-"}</span>
+                  </div>
+                  <div className="flex justify-between px-4 py-2">
+                    <span className="text-gray-500">Email:</span>
+                    <span>{user.email}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Button */}
+              <div className="mt-6 text-center">
+                <button
+                  onClick={() => toast.info("Edit profile coming soon...")}
+                  className="bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700"
+                >
+                  Edit Profile
+                </button>
+              </div>
+
+            </div>
+          </div>
             <div className="bg-white shadow-lg rounded-2xl p-6 max-w-lg w-full">
               <div className="flex flex-col items-center">
                 {/* Profile image */}
@@ -101,6 +167,5 @@ export default function ProfilePage() {
           </div>
         </div>
       </div>
-    </div>
   );
 }
