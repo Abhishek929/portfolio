@@ -194,11 +194,12 @@ export const UpdateUser = async (req, res) => {
 
     if (username) user.username = username;
     if (email) user.email = email;
-    if (role) user.role = role; // removed admin-only restriction
+    if (role) user.role = role;
 
     await user.save();
     res.json(user);
   } catch (err) {
+    console.error("UpdateUser error:", err);  // log to Vercel
     res.status(500).json({ error: err.message });
   }
 };
