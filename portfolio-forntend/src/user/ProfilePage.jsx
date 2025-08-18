@@ -25,11 +25,11 @@ export default function ProfilePage() {
 
       const parsedUser = JSON.parse(userId);
       console.log("Parsed user ID:", parsedUser);
-      console.log("Parsed user ID 2:", parsedUser._id);
+      console.log("Parsed user ID 2:", parsedUser.id);
       const token = localStorage.getItem("token");
       
       const res = await fetch(
-        `https://portfolio-api-eight-green.vercel.app/api/auth/get-user/${parsedUser._id}`,
+        `https://portfolio-api-eight-green.vercel.app/api/auth/get-user/${parsedUser.id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
