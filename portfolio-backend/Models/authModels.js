@@ -8,6 +8,10 @@ const authSchema = new mongoose.Schema({
     fristname: { type: String, default: "" },
     lastname: { type: String, default: "" },
     image: { type: String, default: "" },
+    dob: { type: Date, default: null },
+    address: { type: String, default: "" },
+    phone: { type: String, default: "" },
+    gender: { type: String, enum: ["male", "female", "other"], default: "other" },
 });
 
 const Auth = mongoose.models.Auth || mongoose.model("Auth", authSchema);
