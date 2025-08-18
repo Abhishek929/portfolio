@@ -17,6 +17,7 @@ export default function ProfilePage() {
   useEffect(() => {
     fetchProfile();
   }, [id]);
+  console.log("id", id);
 
   const fetchProfile = async () => {
     try {
