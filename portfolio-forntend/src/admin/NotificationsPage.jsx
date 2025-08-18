@@ -26,7 +26,7 @@ const NotificationsPage = () => {
   }, [navigate]);
 
   return (
-    <div className="admin-dashboard">
+    <div className="admin-notifications">
       {/* Sidebar */}
       <div className="sidebar-container">
         <Sidebar />
