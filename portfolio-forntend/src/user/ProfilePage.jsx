@@ -21,7 +21,7 @@ export default function ProfilePage() {
       const userId = localStorage.getItem("token"); // 👈 stored after login
       if (!userId) throw new Error("User not logged in");
 
-      const res = await fetch(`https://portfolio-api-eight-green.vercel.app/api/auth/get-user/${id}`);
+      const res = await fetch(`https://portfolio-api-eight-green.vercel.app/api/auth/get-user/68a033983649e637905583b5`);
       if (!res.ok) throw new Error("Failed to load profile");
 
       const data = await res.json();
