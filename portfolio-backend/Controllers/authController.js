@@ -198,8 +198,8 @@ export const UpdateUser = async (req, res) => {
     if (email) user.email = email;
 
     // Role update only if requester is admin
-    if (role && req.user?.role === "admin") {
-      user.role = role;
+    if (role) {
+        user.role = role;
     }
 
     // Save the updated user 
@@ -208,7 +208,6 @@ export const UpdateUser = async (req, res) => {
 
     // Return the updated user
     res.json(user);
-    console.log("User updateds:", res.json(user));
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
