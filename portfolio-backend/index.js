@@ -11,12 +11,13 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 // Middleware
-app.use(express.json());
 app.use(cors({ origin: "https://portfolio-ui-phi.vercel.app" }));
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     next();
 });
+
+app.use(express.json());
 
 // Connect to DB
 connectDB();
