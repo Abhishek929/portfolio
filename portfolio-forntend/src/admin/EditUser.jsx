@@ -57,10 +57,10 @@ export default function EditUser() {
         },
       )
       if (!res.ok) throw new Error('Failed to update user')
-      toast.success("User updated successfully", {
-        position: "top-right",
-      });
-      navigate('/admin/manage-users')
+      toast.success("User updated successfully", { position: "top-right" });
+      setTimeout(() => {
+        navigate('/admin/manage-users')
+      }, 1500);
     } catch (err) {
       setError(err.message)
     }

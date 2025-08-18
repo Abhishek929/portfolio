@@ -8,6 +8,7 @@ import {SignupUser,
     UpdateUser, 
     DeleteUser } from '../Controllers/authController.js';
 import checkDuplicateUsernameOrEmail from "../Middlewares/verifyUser.js";
+import protect from '../Middlewares/auth.js';
 
 const router = express.Router();
 
@@ -30,7 +31,7 @@ router.get("/get-users", GetUsers);
 router.get("/get-user/:id", GetUserById);
 
 // Update user
-router.patch("/update-user/:id", UpdateUser);
+router.patch("/update-user/:id", protect, UpdateUser);
 
 // Delete user
 router.delete("/delete-user/:id", DeleteUser);
