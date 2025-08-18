@@ -4,24 +4,24 @@ import "react-toastify/dist/ReactToastify.css";
 import "./ProfilePage.css";
 import Sidebar from "../admin/Sidebar";
 import AdminHeader from "../admin/AdminHeader";
+import { useParams } from 'react-router-dom'
 
 export default function ProfilePage() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const { id } = useParams()
 
   useEffect(() => {
     fetchProfile();
-  }, []);
+  }, [id]);
 
   const fetchProfile = async () => {
     try {
       const userId = localStorage.getItem("token"); // 👈 stored after login
       if (!userId) throw new Error("User not logged in");
 
-      const res = await fetch(
-        `https://portfolio-api-eight-green.vercel.app/api/auth/get-user/${userId}`
-      );
+      const res = await fetch(`https://portfolio-api-eight-green.vercel.app/api/auth/get-user/${id}`);
       if (!res.ok) throw new Error("Failed to load profile");
 
       const data = await res.json();
@@ -37,15 +37,15 @@ export default function ProfilePage() {
   if (error) return <p className="text-center text-red-500">{error}</p>;
 
   return (
-    <div className="admin-dashboard">
+    <div className="profile-dashboard">
       {/* Sidebar */}
       <div className="sidebar-container">
         <Sidebar />
       </div>
       {/* Main area */}
-      <div className="admin-main">
+      <div className="profile-main">
         <AdminHeader />
-        <div className="admin-content">
+        <div className="profile-content">
           <ToastContainer />
           <h2 className="text-center">Profile Details</h2>
           <div className="min-h-screen flex items-center justify-center bg-gray-100">
