@@ -91,7 +91,7 @@ export default function EditProfilePage() {
             <div className="profile-content">
                 <ToastContainer />
                 <div className="profile-card">
-                    <h2 className="text-2xl font-bold mb-4">Edit Profile</h2>
+                    <h2 className="edit-profile-title">Edit Profile</h2>
                     <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow-md space-y-4">
                         <div className="profile-avatar">
                             <img src={formData.image || ProfileImage } alt="Profile" className="avatar-img"/>
