@@ -17,7 +17,6 @@ export default function ProfilePage() {
   useEffect(() => {
     fetchProfile();
   }, [id]);
-  console.log("id", id);
 
   const fetchProfile = async () => {
     try {
@@ -25,6 +24,8 @@ export default function ProfilePage() {
       if (!userId) throw new Error("User not logged in");
 
       const parsedUser = JSON.parse(userId);
+      console.log("Parsed user ID:", parsedUser);
+      console.log("Parsed user ID 2:", parsedUser._id);
       const token = localStorage.getItem("token");
       
       const res = await fetch(
