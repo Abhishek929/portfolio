@@ -16,6 +16,8 @@ const AdminRoutes = () => {
                 <Route path="/admin/reports" element={<Reports />} />
                 <Route path="/admin/contacts" element={<ContactsPage />} />
                 <Route path="/admin/edit-user/:id" element={<EditUser />} />
+                <Route path="/admin/profile" element={<ProfilePage />} />
+                <Route path="/admin/notifications" element={<NotificationsPage />} />
             </Routes>
         </Router>
     );
