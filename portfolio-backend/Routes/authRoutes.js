@@ -30,7 +30,7 @@ router.get("/get-users", GetUsers);
 router.get("/get-user/:id", GetUserById);
 
 // Update user
-router.patch("/update-user/:id", UpdateUser);
+router.put("/update-user/:id", UpdateUser);
 
 // Delete user
 router.delete("/delete-user/:id", DeleteUser);

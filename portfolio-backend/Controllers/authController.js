@@ -202,9 +202,13 @@ export const UpdateUser = async (req, res) => {
       user.role = role;
     }
 
+    // Save the updated user 
     await user.save();
+    console.log("User updated:", user);
 
+    // Return the updated user
     res.json(user);
+    console.log("User updateds:", res.json(user));
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

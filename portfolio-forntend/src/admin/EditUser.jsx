@@ -51,7 +51,7 @@ export default function EditUser() {
       const res = await fetch(
         `https://portfolio-api-eight-green.vercel.app/api/auth/update-user/${id}`,
         {
-          method: 'PATCH',
+          method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData),
         },
