@@ -48,124 +48,55 @@ export default function ProfilePage() {
         <AdminHeader />
         <div className="profile-content">
           <ToastContainer />
-          {/* Profile Card */}
-          <div className="min-h-screen flex items-center justify-center bg-gray-100">
-            <div className="bg-white shadow-lg rounded-2xl p-6 max-w-lg w-full">
-              
-              {/* Top Section */}
-              <div className="flex flex-col items-center">
-                <img
-                  src={user.image || ProfileImage}
-                  alt="Profile"
-                  className="w-32 h-32 rounded-full object-cover mb-4 border-4 border-blue-500"
-                />
-                <h2 className="text-2xl font-semibold flex items-center gap-2">
-                  {user.username || "User Name"}
-                  <span className="text-blue-500">✔</span>
-                </h2>
-                <p className="text-gray-600">{user.email}</p>
-              </div>
-
-              {/* Personal Details */}
-              <div className="mt-6 border rounded-xl overflow-hidden">
-                <div className="bg-gray-50 px-4 py-2 border-b">
-                  <h3 className="font-semibold text-gray-700">Personal details</h3>
-                </div>
-                <div className="divide-y">
-                  <div className="flex justify-between px-4 py-2">
-                    <span className="text-gray-500">Full Name:</span>
-                    <span className="font-medium">{user.firstname} {user.lastname}</span>
-                  </div>
-                  <div className="flex justify-between px-4 py-2">
-                    <span className="text-gray-500">Date of Birth:</span>
-                    <span>{user.dob ? new Date(user.dob).toLocaleDateString() : "-"}</span>
-                  </div>
-                  <div className="flex justify-between px-4 py-2">
-                    <span className="text-gray-500">Gender:</span>
-                    <span>{user.gender || "-"}</span>
-                  </div>
-                  <div className="flex justify-between px-4 py-2">
-                    <span className="text-gray-500">Nationality:</span>
-                    <span>{user.nationality || "-"}</span>
-                  </div>
-                  <div className="flex justify-between px-4 py-2">
-                    <span className="text-gray-500">Address:</span>
-                    <span>{user.address || "-"}</span>
-                  </div>
-                  <div className="flex justify-between px-4 py-2">
-                    <span className="text-gray-500">Phone Number:</span>
-                    <span>{user.phone || "-"}</span>
-                  </div>
-                  <div className="flex justify-between px-4 py-2">
-                    <span className="text-gray-500">Email:</span>
-                    <span>{user.email}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Action Button */}
-              <div className="mt-6 text-center">
-                <button
-                  onClick={() => toast.info("Edit profile coming soon...")}
-                  className="bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700"
-                >
-                  Edit Profile
-                </button>
-              </div>
-
+          <div className="profile-card">
+            <div className="flex flex-col items-center">
+              <img src={user.image || ProfileImage } alt="Profile" />
+              <h2 className="profile-username">
+                {user.username || "User Name"} <span>✔</span>
+              </h2>
+              <p className="text-gray-600">{user.email}</p>
             </div>
-          </div>
-            <div className="bg-white shadow-lg rounded-2xl p-6 max-w-lg w-full">
-              <div className="flex flex-col items-center">
-                {/* Profile image */}
-                <img
-                  src={user.image || "https://via.placeholder.com/120"}
-                  alt="Profile"
-                  className="w-32 h-32 rounded-full object-cover mb-4 border-4 border-blue-500"
-                />
-                <h2 className="text-2xl font-semibold">{user.username}</h2>
-                <p className="text-gray-600">{user.email}</p>
-                <p className="text-sm text-gray-400">Role: {user.role}</p>
-              </div>
 
-              <div className="mt-6 space-y-3">
-                <div className="flex justify-between">
-                  <span className="font-medium">First Name:</span>
-                  <span>{user.fristname || "-"}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-medium">Last Name:</span>
-                  <span>{user.lastname || "-"}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-medium">Phone:</span>
-                  <span>{user.phone || "-"}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-medium">Date of Birth:</span>
-                  <span>{user.dob ? new Date(user.dob).toLocaleDateString() : "-"}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-medium">Gender:</span>
-                  <span>{user.gender}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-medium">Address:</span>
-                  <span>{user.address || "-"}</span>
-                </div>
+            <div className="mt-6 border rounded-xl overflow-hidden">
+              <div className="details-header">Personal details</div>
+              <div className="details-row">
+                <span className="details-label">Full Name:</span>
+                <span className="details-value">{user.firstname} {user.lastname}</span>
               </div>
+              <div className="details-row">
+                <span className="details-label">Date of Birth:</span>
+                <span className="details-value">{user.dob ? new Date(user.dob).toLocaleDateString() : "-"}</span>
+              </div>
+              <div className="details-row">
+                <span className="details-label">Gender:</span>
+                <span className="details-value">{user.gender || "-"}</span>
+              </div>
+              <div className="details-row">
+                <span className="details-label">Nationality:</span>
+                <span className="details-value">{user.nationality || "-"}</span>
+              </div>
+              <div className="details-row">
+                <span className="details-label">Address:</span>
+                <span className="details-value">{user.address || "-"}</span>
+              </div>
+              <div className="details-row">
+                <span className="details-label">Phone Number:</span>
+                <span className="details-value">{user.phone || "-"}</span>
+              </div>
+              <div className="details-row">
+                <span className="details-label">Email:</span>
+                <span className="details-value">{user.email}</span>
+              </div>
+            </div>
 
-              <div className="mt-6 text-center">
-                <button
-                  onClick={() => toast.info("Edit profile coming soon...")}
-                  className="bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700"
-                >
-                  Edit Profile
-                </button>
-              </div>
+            <div className="text-center">
+              <button className="profile-btn" onClick={() => toast.info("Edit profile coming soon...")}>
+                Edit Profile
+              </button>
             </div>
           </div>
         </div>
       </div>
+    </div>
   );
 }

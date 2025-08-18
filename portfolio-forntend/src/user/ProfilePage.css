@@ -1,96 +1,94 @@
-/* === Profile Dashboard Layout === */
+/* Dashboard layout */
 .profile-dashboard {
   display: flex;
   min-height: 100vh;
-  background-color: #f9fafb; /* light gray background */
+  background-color: #f3f4f6; /* gray-100 */
 }
 
-/* Main area */
+/* Main content */
 .profile-main {
-  margin-left: 260px; /* match sidebar width */
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: #f9fafb;
-  min-height: 100vh;
 }
 
-/* Profile Content */
 .profile-content {
+  flex: 1;
   padding: 2rem;
 }
 
-/* Heading */
-.profile-content h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  color: #111827;
-}
-
-/* Profile Card */
-.profile-content .bg-white {
+/* Card */
+.profile-card {
   background: #fff;
   border-radius: 1rem;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  padding: 2rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
   max-width: 600px;
-  width: 100%;
-  transition: transform 0.2s ease;
+  margin: 2rem auto;
 }
 
-.profile-content .bg-white:hover {
-  transform: translateY(-3px);
+/* Profile image */
+.profile-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
-/* Profile Image */
-.profile-content img {
-  border: 4px solid #2563eb; /* blue border */
-  transition: transform 0.3s ease;
+/* Username */
+.profile-username {
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
-.profile-content img:hover {
-  transform: scale(1.05);
+.profile-username span {
+  color: #3b82f6; /* blue-500 */
 }
 
-/* Name + Email */
-.profile-content h2 {
-  font-size: 1.8rem;
-  margin-top: 0.5rem;
+/* Section header */
+.details-header {
+  background: #f9fafb; /* gray-50 */
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  font-weight: 600;
+  color: #374151; /* gray-700 */
 }
 
-.profile-content p {
-  margin: 0.2rem 0;
-}
-
-/* Info rows */
-.profile-content .flex {
-  padding: 0.5rem 0;
+/* Detail rows */
+.details-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
   border-bottom: 1px solid #e5e7eb;
 }
 
-.profile-content .flex:last-child {
+.details-row:last-child {
   border-bottom: none;
 }
 
-.profile-content span {
-  font-size: 0.95rem;
-  color: #374151;
+.details-label {
+  color: #6b7280; /* gray-500 */
+}
+
+.details-value {
+  font-weight: 500;
 }
 
 /* Button */
-.profile-content button {
-  background: #2563eb;
-  color: #fff;
-  padding: 0.6rem 1.5rem;
-  border-radius: 0.6rem;
+.profile-btn {
+  margin-top: 1.5rem;
+  background: #2563eb; /* blue-600 */
+  color: white;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.5rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background 0.3s ease;
-  border: none;
+  transition: background 0.2s ease-in-out;
 }
 
-.profile-content button:hover {
-  background: #1e40af;
+.profile-btn:hover {
+  background: #1d4ed8; /* blue-700 */
 }
