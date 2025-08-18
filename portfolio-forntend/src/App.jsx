@@ -10,6 +10,7 @@ import Logout from "./pages/Logout";
 import ForgotPassword from "./components/ForgotPassword";
 import ResetPasswordForm from './components/ResetPasswordForm';
 import AdminRoutes from './Routes/AdminRoutes';
+import AccountPage from './user/AccountPage';
 
 function App() {
   
@@ -21,7 +22,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about-us" element={<About />} />
           <Route path="/services" element={<Services />} />
-          <Route path="/userspage" element={<UsersPage />} />
+          <Route path="/account" element={<AccountPage />} />
           <Route path="/sign-up" element={<SignupForm />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/logout" element={<Logout />} />
