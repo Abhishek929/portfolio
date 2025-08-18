@@ -3,6 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom'
 import AdminHeader from './AdminHeader'
 import Sidebar from './Sidebar'
 import './EditUser.css'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function EditUser() {
   const { id } = useParams()
@@ -55,7 +57,9 @@ export default function EditUser() {
         },
       )
       if (!res.ok) throw new Error('Failed to update user')
-      alert('User updated successfully')
+      toast.success("User updated successfully", {
+        position: "top-right",
+      });
       navigate('/admin/manage-users')
     } catch (err) {
       setError(err.message)
@@ -74,6 +78,7 @@ export default function EditUser() {
         <div className="admin-main">
           <AdminHeader />
           <div className="admin-content">
+            <ToastContainer />
             <div className="edit-user-container">
               <h2>Edit User</h2>
               {loading && <p>Loading user data...</p>}
