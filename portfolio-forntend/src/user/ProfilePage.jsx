@@ -6,6 +6,7 @@ import AdminHeader from "../admin/AdminHeader";
 import { useParams } from "react-router-dom";
 import ProfileImage from "../assets/profile.png";
 import { useNavigate } from "react-router-dom";
+import "./ProfilePage.css";
 
 export default function ProfilePage() {
   const [user, setUser] = useState(null);
@@ -24,8 +25,6 @@ export default function ProfilePage() {
       if (!userId) throw new Error("User not logged in");
 
       const parsedUser = JSON.parse(userId);
-      console.log("Parsed user ID:", parsedUser);
-      console.log("Parsed user ID 2:", parsedUser.id);
       const token = localStorage.getItem("token");
       
       const res = await fetch(
