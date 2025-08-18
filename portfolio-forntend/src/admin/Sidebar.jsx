@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   FaTachometerAlt,
   FaUser,
   FaLayerGroup,
   FaComments,
-  FaBox
+  FaBox,
+  FaCog,
+  FaBell,
 } from "react-icons/fa";
 import "./Sidebar.css";
 
 export default function Sidebar() {
   const navigate = useNavigate();
+  const [accountOpen, setAccountOpen] = useState(false);
 
   return (
     <aside className="sidebar">
@@ -36,8 +39,36 @@ export default function Sidebar() {
           <FaBox className="sidebar-icon" />
           Products
         </li>
-        <li onClick={() => navigate("/admin/site-settings")}>Settings</li>
+        <li onClick={() => navigate("/admin/site-settings")}>
+          <FaCog className="sidebar-icon" />
+          Settings
+        </li>
         <li onClick={() => navigate("/admin/reports")}>Reports</li>
+        // Add my account
+
+        {/* My Account with Submenu */}
+        <li
+          onClick={() => setAccountOpen(!accountOpen)}
+          className="cursor-pointer"
+        >
+          <FaUser className="sidebar-icon" />
+          My Account
+        </li>
+        {accountOpen && (
+          <ul className="submenu">
+            <li onClick={() => navigate("/admin/profile")}>Profile</li>
+            <li onClick={() => navigate("/admin/notifications")}>
+              <FaBell className="sidebar-icon" />
+              Notifications
+            </li>
+            <li onClick={() => navigate("/admin/account-settings")}>
+              Account Settings
+            </li>
+            <li onClick={() => navigate("/logout")} className="text-red-500">
+              Logout
+            </li>
+          </ul>
+        )}
       </ul>
     </aside>
   );

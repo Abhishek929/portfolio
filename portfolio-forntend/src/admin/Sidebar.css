@@ -45,3 +45,20 @@
   color: #fff;
   border-left: 4px solid #007bff;
 }
+
+.submenu {
+  margin-left: 20px;
+  list-style: none;
+  padding: 5px 0;
+}
+
+.submenu li {
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.submenu li:hover {
+  background: #f0f0f0;
+  border-radius: 4px;
+}

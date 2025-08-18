@@ -33,7 +33,6 @@ const SignupForm = () => {
     } catch (err) {
       console.error(err);
       toast.error("Server error", { position: "top-right" });
-      alert("Error signing user");
     }
   };
 
