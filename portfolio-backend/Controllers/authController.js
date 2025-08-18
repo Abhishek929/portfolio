@@ -187,19 +187,25 @@ export const GetUserById = async (req, res) => {
 // Update user
 export const UpdateUser = async (req, res) => {
   try {
+    // Find the user by ID
     const user = await Auth.findById(req.params.id);
     if (!user) return res.status(404).json({ message: "User not found" });
 
+    // Update allowed fields
     const { username, email, role } = req.body;
 
     if (username) user.username = username;
     if (email) user.email = email;
-    if (role) user.role = role;
+
+    // Role update only if requester is admin
+    if (role && req.user?.role === "admin") {
+      user.role = role;
+    }
 
     await user.save();
+
     res.json(user);
   } catch (err) {
-    console.error("UpdateUser error:", err);  // log to Vercel
     res.status(500).json({ error: err.message });
   }
 };
