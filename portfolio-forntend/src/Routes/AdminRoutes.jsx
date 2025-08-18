@@ -7,6 +7,7 @@ import ContactsPage from "../admin/ContactsPage";
 import EditUser from '../admin/EditUser';
 import NotificationsPage from '../admin/NotificationsPage';
 import ProfilePage from '../user/ProfilePage';
+import EditProfilePage from '../user/EditProfilePage';
 
 const AdminRoutes = () => {
     return (
@@ -19,6 +20,7 @@ const AdminRoutes = () => {
                 <Route path="/admin/contacts" element={<ContactsPage />} />
                 <Route path="/admin/edit-user/:id" element={<EditUser />} />
                 <Route path="/admin/profile" element={<ProfilePage />} />
+                <Route path="/admin/edit-profile/:id" element={<EditProfilePage />} />
                 <Route path="/admin/notifications" element={<NotificationsPage />} />
             </Routes>
         </Router>

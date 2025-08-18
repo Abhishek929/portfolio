@@ -5,7 +5,7 @@ const authSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     role: { type: String, enum: ["admin", "user"], default: "user" },
-    fristname: { type: String, default: "" },
+    firstname: { type: String, default: "" },
     lastname: { type: String, default: "" },
     image: { type: String, default: "" },
     dob: { type: Date, default: null },

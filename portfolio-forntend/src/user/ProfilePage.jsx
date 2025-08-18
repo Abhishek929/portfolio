@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./ProfilePage.css";
 import Sidebar from "../admin/Sidebar";
 import AdminHeader from "../admin/AdminHeader";
-import { useParams } from 'react-router-dom';
-import ProfileImage from "../assets/profile.png"; 
+import { useParams } from "react-router-dom";
+import ProfileImage from "../assets/profile.png";
+import { useNavigate } from "react-router-dom";
 
 export default function ProfilePage() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const { id } = useParams()
+  const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchProfile();
@@ -22,10 +23,15 @@ export default function ProfilePage() {
       const userId = localStorage.getItem("token"); // 👈 stored after login
       if (!userId) throw new Error("User not logged in");
 
-      const res = await fetch(`https://portfolio-api-eight-green.vercel.app/api/auth/get-user/68a033983649e637905583b5`);
+      const res = await fetch(
+        `https://portfolio-api-eight-green.vercel.app/api/auth/get-user/${id}`,
+        {
+          headers: { Authorization: `Bearer ${userId}` }
+        }
+      );
       if (!res.ok) throw new Error("Failed to load profile");
-
       const data = await res.json();
+
       setUser(data);
     } catch (err) {
       setError(err.message);
@@ -90,7 +96,7 @@ export default function ProfilePage() {
             </div>
 
             <div className="text-center">
-              <button className="profile-btn" onClick={() => toast.info("Edit profile coming soon...")}>
+              <button className="profile-btn" onClick={() => navigate(`/admin/edit-profile/${user._id}`)}>
                 Edit Profile
               </button>
             </div>
