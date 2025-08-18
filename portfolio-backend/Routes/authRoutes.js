@@ -8,7 +8,7 @@ import {SignupUser,
     UpdateUser, 
     DeleteUser } from '../Controllers/authController.js';
 import checkDuplicateUsernameOrEmail from "../Middlewares/verifyUser.js";
-import protect from '../Middlewares/auth.js';
+import protect from '../Middlewares/authMiddleware.js';
 
 const router = express.Router();
 
