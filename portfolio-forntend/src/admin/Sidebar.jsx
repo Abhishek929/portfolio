@@ -44,7 +44,6 @@ export default function Sidebar() {
           Settings
         </li>
         <li onClick={() => navigate("/admin/reports")}>Reports</li>
-        // Add my account
 
         {/* My Account with Submenu */}
         <li
@@ -56,16 +55,13 @@ export default function Sidebar() {
         </li>
         {accountOpen && (
           <ul className="submenu">
-            <li onClick={() => navigate("/admin/profile")}>Profile</li>
+            <li onClick={() => navigate("/admin/profile")}>
+              <FaUser className="sidebar-icon" />
+              Profile
+            </li>
             <li onClick={() => navigate("/admin/notifications")}>
               <FaBell className="sidebar-icon" />
               Notifications
-            </li>
-            <li onClick={() => navigate("/admin/account-settings")}>
-              Account Settings
-            </li>
-            <li onClick={() => navigate("/logout")} className="text-red-500">
-              Logout
             </li>
           </ul>
         )}
