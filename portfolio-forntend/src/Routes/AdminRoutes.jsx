@@ -5,6 +5,8 @@ import SiteSettings from "../admin/SiteSettings";
 import Reports from "../admin/Reports";
 import ContactsPage from "../admin/ContactsPage";
 import EditUser from '../admin/EditUser';
+import ProfilePage from '../user/ProfilePage';
+import NotificationsPage from '../admin/NotificationsPage';
 
 const AdminRoutes = () => {
     return (
