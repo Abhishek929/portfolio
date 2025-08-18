@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./AdminPage.css";
 import Sidebar from "./Sidebar";
 import AdminHeader from "./AdminHeader";
+import './NotificationsPage.css';
 
 const NotificationsPage = () => {
   const navigate = useNavigate();
