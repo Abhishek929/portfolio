@@ -24,7 +24,7 @@ export default function ProfilePage() {
       const userId = localStorage.getItem("user"); // 👈 stored after login
       console.log("user id", userId);
       if (!userId) throw new Error("User not logged in");
-      console.log("user id 2", user.id);
+      console.log("user id 2", userId.id);
       const res = await fetch(
         `https://portfolio-api-eight-green.vercel.app/api/auth/get-user/${user.id}`,
         {
