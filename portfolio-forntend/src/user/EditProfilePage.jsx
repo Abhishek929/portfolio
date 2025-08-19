@@ -22,11 +22,16 @@ export default function EditProfilePage() {
   const [error, setError] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [image, setImage] = useState(null);
 
   useEffect(() => {
     fetchProfile();
   }, [id]);
+
+  // Handle image input
+  const handleImageChange = (e) => {
+    setImage(e.target.files[0]);
+  };
 
   const fetchProfile = async () => {
     try {
@@ -68,16 +73,15 @@ export default function EditProfilePage() {
       form.append("phone", formData.phone);
       form.append("gender", formData.gender);
 
-      if (selectedFile) {
-        form.append("image", selectedFile); // actual file goes here
+      if (image) {
+        form.append("image", image); // multer expects "image"
       }
 
       const res = await fetch(
         `https://portfolio-rosy-five-54.vercel.app/api/auth/update-user/${id}`,
         {
           method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
+          body: form,
         }
       );
 
@@ -111,15 +115,7 @@ export default function EditProfilePage() {
                             <label htmlFor="avatarUpload" className="avatar-edit">
                               <img src={formData.image || ProfileImage } alt="Profile" className="avatar-img"/>
                             </label>
-
-                            <input type="file" id="avatarUpload" accept="image/*" className="hidden" onChange={(e) => {
-                                const file = e.target.files[0];
-                                setSelectedFile(file);
-                                if (file) {
-                                  setFormData({ ...formData, image: URL.createObjectURL(file) }); // preview only
-                                }
-                              }}
-                            />
+                            <input type="file" id="avatarUpload" accept="image/*" className="hidden" onChange={handleImageChange}/>
                         </div>
                         <div className="edit-profile">
                             <label className="block text-sm font-medium">First Name</label>
