@@ -69,7 +69,7 @@ export default function EditProfilePage() {
 
       if (!res.ok) throw new Error("Failed to update profile");
       toast.success("Profile updated successfully!");
-      setTimeout(() => navigate(`/profile/${id}`), 2000); // redirect after update
+      setTimeout(() => navigate(`/admin/profile`), 2000); // redirect after update
     } catch (err) {
       toast.error(err.message);
     }

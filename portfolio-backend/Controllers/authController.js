@@ -227,10 +227,15 @@ export const UpdateUser = async (req, res) => {
     if (!user) return res.status(404).json({ message: "User not found" });
 
     // Update allowed fields
-    const { username, email, role } = req.body;
+    const { role, firstname, lastname, dob, address, phone, gender, image } = req.body;
 
-    if (username) user.username = username;
-    if (email) user.email = email;
+    if (firstname) user.firstname = firstname;
+    if (lastname) user.lastname = lastname;
+    if (dob) user.dob = dob;
+    if (address) user.address = address;
+    if (phone) user.phone = phone;
+    if (gender) user.gender = gender;
+    if (image) user.image = image;
 
     // Role update only if requester is admin
     if (role) {
