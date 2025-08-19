@@ -226,9 +226,12 @@ export const UpdateUser = async (req, res) => {
     const user = await Auth.findById(req.params.id);
     if (!user) return res.status(404).json({ message: "User not found" });
 
-    // Update allowed fields
-    const { role, firstname, lastname, dob, address, phone, gender } = req.body;
+    // Fields from body
+    const { username, email, role, firstname, lastname, dob, address, phone, gender } = req.body;
 
+    // Update user fields
+    if (username) user.username = username;
+    if (email) user.email = email;
     if (firstname) user.firstname = firstname;
     if (lastname) user.lastname = lastname;
     if (dob) user.dob = dob;
@@ -236,23 +239,21 @@ export const UpdateUser = async (req, res) => {
     if (phone) user.phone = phone;
     if (gender) user.gender = gender;
 
-    // Save uploaded image path
+    // Image update (agar naya image upload hua hai to)
     if (req.file) {
-        user.image = `/uploads/${req.file.filename}`;
+      user.image = `/uploads/${req.file.filename}`;
     }
 
-    // Role update only if requester is admin
+    // Role update only if admin
     if (role) {
-        user.role = role;
+      user.role = role;
     }
 
-    // Save the updated user 
     await user.save();
-
-    // Return the updated user
-    res.json(user);
+    res.json({ message: "User updated successfully", user });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error(err); // Debug ke liye console me print karo
+    res.status(500).json({ error: "Internal Server Error", details: err.message });
   }
 };
 
