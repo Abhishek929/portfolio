@@ -73,8 +73,8 @@ export default function EditProfilePage() {
       form.append("phone", formData.phone);
       form.append("gender", formData.gender);
 
-      if (formData.image instanceof File) {
-        form.append("image", formData.image);
+      if (image) {
+        form.append("image", image); // multer expects "image"
       }
 
       const res = await fetch(
