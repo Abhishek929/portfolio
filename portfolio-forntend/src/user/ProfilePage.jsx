@@ -84,10 +84,6 @@ export default function ProfilePage() {
                 <span className="details-value">{user.gender || "-"}</span>
               </div>
               <div className="details-row">
-                <span className="details-label">Nationality:</span>
-                <span className="details-value">{user.nationality || "-"}</span>
-              </div>
-              <div className="details-row">
                 <span className="details-label">Address:</span>
                 <span className="details-value">{user.address || "-"}</span>
               </div>
