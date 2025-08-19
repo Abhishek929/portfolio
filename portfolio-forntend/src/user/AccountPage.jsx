@@ -25,7 +25,7 @@ export default function AccountPage() {
       if (!userId) throw new Error("User not logged in");
 
       const res = await fetch(
-        `https://portfolio-api-eight-green.vercel.app/api/auth/get-user/${userId}`
+        `https://portfolio-rosy-five-54.vercel.app/api/auth/get-user/${userId}`
       );
       if (!res.ok) throw new Error("Failed to fetch user data");
       const data = await res.json();
@@ -53,7 +53,7 @@ export default function AccountPage() {
     try {
       const userId = localStorage.getItem("userId");
       const res = await fetch(
-        `https://portfolio-api-eight-green.vercel.app/api/auth/update-user/${userId}`,
+        `https://portfolio-rosy-five-54.vercel.app/api/auth/update-user/${userId}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },

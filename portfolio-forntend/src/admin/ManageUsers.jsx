@@ -18,7 +18,7 @@ export default function ManageUsers() {
 
   const fetchUsers = async () => {
     try {
-      const res = await fetch('https://portfolio-api-eight-green.vercel.app/api/auth/get-users')
+      const res = await fetch('https://portfolio-rosy-five-54.vercel.app/api/auth/get-users')
       if (!res.ok) throw new Error('Failed to fetch users')
       const data = await res.json()
       setUsers(data)
@@ -34,7 +34,7 @@ export default function ManageUsers() {
 
     try {
       const res = await fetch(
-        `https://portfolio-api-eight-green.vercel.app/api/auth/delete-user/${id}`,
+        `https://portfolio-rosy-five-54.vercel.app/api/auth/delete-user/${id}`,
         {
           method: 'DELETE',
         },

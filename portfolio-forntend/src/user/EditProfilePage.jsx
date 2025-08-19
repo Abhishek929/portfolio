@@ -30,7 +30,7 @@ export default function EditProfilePage() {
   const fetchProfile = async () => {
     try {
       const res = await fetch(
-        `https://portfolio-api-eight-green.vercel.app/api/auth/get-user/${id}`
+        `https://portfolio-rosy-five-54.vercel.app/api/auth/get-user/${id}`
       );
       if (!res.ok) throw new Error("Failed to load profile");
       const data = await res.json();
@@ -59,7 +59,7 @@ export default function EditProfilePage() {
     e.preventDefault();
     try {
       const res = await fetch(
-        `https://portfolio-api-eight-green.vercel.app/api/auth/update-user/${id}`,
+        `https://portfolio-rosy-five-54.vercel.app/api/auth/update-user/${id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },

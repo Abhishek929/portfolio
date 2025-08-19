@@ -24,7 +24,7 @@ const ResetPasswordForm = () => {
     }
 
     try {
-      const res = await fetch(`https://portfolio-api-eight-green.vercel.app/api/auth/reset-password?token=${token}`, {
+      const res = await fetch(`https://portfolio-rosy-five-54.vercel.app/api/auth/reset-password?token=${token}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ password })

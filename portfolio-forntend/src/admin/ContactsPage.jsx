@@ -12,7 +12,7 @@ export default function ContactsPage() {
     const fetchContacts = async () => {
       try {
         const res = await fetch(
-          'https://portfolio-api-eight-green.vercel.app/api/contact/all-contacts',
+          'https://portfolio-rosy-five-54.vercel.app/api/contact/all-contacts',
         )
         if (!res.ok) {
           throw new Error('Failed to fetch contacts')

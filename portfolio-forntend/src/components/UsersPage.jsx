@@ -6,7 +6,7 @@ const UsersPage = () => {
   const [editUser, setEditUser] = useState(null);
 
   const fetchUsers = async () => {
-    const res = await fetch("https://portfolio-api-eight-green.vercel.app/api/user");
+    const res = await fetch("https://portfolio-rosy-five-54.vercel.app/api/user");
     const data = await res.json();
     setUsers(data);
   };
@@ -16,7 +16,7 @@ const UsersPage = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    await fetch(`https://portfolio-api-eight-green.vercel.app/api/user/${id}`, { method: "DELETE" });
+    await fetch(`https://portfolio-rosy-five-54.vercel.app/api/user/${id}`, { method: "DELETE" });
     fetchUsers();
   };
 

@@ -8,7 +8,7 @@ const ForgotPassword = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const res = await fetch("https://portfolio-api-eight-green.vercel.app/api/auth/forgot-password", {
+      const res = await fetch("https://portfolio-rosy-five-54.vercel.app/api/auth/forgot-password", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email })

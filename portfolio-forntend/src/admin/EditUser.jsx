@@ -24,7 +24,7 @@ export default function EditUser() {
 
   const fetchUser = async () => {
     try {
-      const res = await fetch(`https://portfolio-api-eight-green.vercel.app/api/auth/get-user/${id}`)
+      const res = await fetch(`https://portfolio-rosy-five-54.vercel.app/api/auth/get-user/${id}`)
       if (!res.ok) throw new Error('Failed to fetch user data')
       const data = await res.json()
       setFormData({
@@ -49,7 +49,7 @@ export default function EditUser() {
 
     try {
       const res = await fetch(
-        `https://portfolio-api-eight-green.vercel.app/api/auth/update-user/${id}`,
+        `https://portfolio-rosy-five-54.vercel.app/api/auth/update-user/${id}`,
         {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },

@@ -28,7 +28,7 @@ export default function ProfilePage() {
       const token = localStorage.getItem("token");
       
       const res = await fetch(
-        `https://portfolio-api-eight-green.vercel.app/api/auth/get-user/${parsedUser.id}`,
+        `https://portfolio-rosy-five-54.vercel.app/api/auth/get-user/${parsedUser.id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
