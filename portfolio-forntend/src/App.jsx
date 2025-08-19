@@ -8,7 +8,6 @@ import LoginForm from './components/LoginForm';
 import Logout from "./pages/Logout";
 import ForgotPassword from "./components/ForgotPassword";
 import ResetPasswordForm from './components/ResetPasswordForm';
-import AdminRoutes from './Routes/AdminRoutes';
 import AccountPage from './user/AccountPage';
 import AdminPage from "./admin/AdminPage";
 import ManageUsers from "./admin/ManageUsers";
@@ -24,7 +23,6 @@ function App() {
   
   return (
     <>
-      <AdminRoutes />
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
