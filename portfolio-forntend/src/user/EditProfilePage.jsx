@@ -92,14 +92,15 @@ export default function EditProfilePage() {
                 <ToastContainer />
                 <div className="profile-card">
                     <h2 className="edit-profile-title">Edit Profile</h2>
-                    
+                    <h2 className="edit-profile-title">Edit Profile</h2>
+  
                     <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow-md space-y-4">
                         <div className="profile-avatar">
                             <img src={formData.image || ProfileImage } alt="Profile" className="avatar-img"/>
                             <label htmlFor="avatarUpload" className="avatar-edit">
                                 <i className="fas fa-pencil-alt"></i>
                             </label>
-                            
+
                             <input type="file" id="avatarUpload" accept="image/*" className="hidden" onChange={(e) =>
                                 setFormData({ ...formData, image: URL.createObjectURL(e.target.files[0]) })
                                 }
