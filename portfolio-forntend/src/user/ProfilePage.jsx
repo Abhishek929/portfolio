@@ -76,24 +76,24 @@ export default function ProfilePage() {
                 <span className="details-value">{user.firstname} {user.lastname}</span>
               </div>
               <div className="details-row">
-                <span className="details-label">Date of Birth:</span>
-                <span className="details-value">{user.dob ? new Date(user.dob).toLocaleDateString() : "-"}</span>
-              </div>
-              <div className="details-row">
-                <span className="details-label">Gender:</span>
-                <span className="details-value">{user.gender || "-"}</span>
-              </div>
-              <div className="details-row">
-                <span className="details-label">Address:</span>
-                <span className="details-value">{user.address || "-"}</span>
+                <span className="details-label">Email:</span>
+                <span className="details-value">{user.email}</span>
               </div>
               <div className="details-row">
                 <span className="details-label">Phone Number:</span>
                 <span className="details-value">{user.phone || "-"}</span>
               </div>
               <div className="details-row">
-                <span className="details-label">Email:</span>
-                <span className="details-value">{user.email}</span>
+                <span className="details-label">Gender:</span>
+                <span className="details-value">{user.gender || "-"}</span>
+              </div>
+              <div className="details-row">
+                <span className="details-label">Date of Birth:</span>
+                <span className="details-value">{user.dob ? new Date(user.dob).toLocaleDateString() : "-"}</span>
+              </div>
+              <div className="details-row">
+                <span className="details-label">Address:</span>
+                <span className="details-value">{user.address || "-"}</span>
               </div>
             </div>
 
