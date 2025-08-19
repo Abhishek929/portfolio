@@ -13,8 +13,9 @@ const PORT = process.env.PORT || 8080;
 
 // CORS Middleware
 app.use(cors({
-    origin: "https://portfolio-abhi-six.vercel.app", // no trailing slash
-    credentials: true, // if you need cookies/authorization headers
+  origin: "https://portfolio-abhi-six.vercel.app", // frontend domain
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
 app.use(express.json());
