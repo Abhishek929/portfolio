@@ -101,7 +101,7 @@ export const forgotPassword = async (req, res) => {
             { expiresIn: "15m" }
         );
 
-        const resetLink = `http://localhost:5173/reset-password?token=${token}`;
+        const resetLink = `https://portfolio-abhi-six.vercel.app/reset-password?token=${token}`;
 
         // Nodemailer setup (Gmail example)
         const transporter = nodemailer.createTransport({
@@ -120,11 +120,46 @@ export const forgotPassword = async (req, res) => {
             to: email,
             subject: "Password Reset Request",
             html: `
-                <p>Hello ${existingUser.username},</p>
-                <p>You requested to reset your password. Click the link below to reset it:</p>
-                <a href="${resetLink}" target="_blank">${resetLink}</a>
-                <p>This link will expire in 15 minutes.</p>
-            `
+                <!DOCTYPE html>
+                <html lang="en">
+                    <head>
+                        <meta charset="UTF-8" />
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                        <title>Password Reset</title>
+                    </head>
+                    <body style="margin:0; padding:0; font-family: Arial, Helvetica, sans-serif; background-color:#f4f4f7;">
+
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f4f4f7">
+                            <tr>
+                                <td align="center">
+                                    <table width="600" border="0" cellspacing="0" cellpadding="40" style="background:#ffffff; border-radius:8px; margin-top:40px; box-shadow:0 4px 8px rgba(0,0,0,0.05);">
+                                        <tr>
+                                            <td align="center" style="padding:20px 40px; border-bottom:1px solid #eee;">
+                                                <h2 style="margin:0; color:#333;">🔒 Password Reset Request</h2>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding:30px 40px; color:#555; font-size:15px; line-height:1.6;">
+                                                <p style="margin:0 0 15px 0;">Hello <strong>${existingUser.username}</strong>,</p>
+                                                <p style="margin:0 0 20px 0;">We received a request to reset your password. Please click the button below to set up a new one:</p>
+                                                <p style="text-align:center; margin:30px 0;">
+                                                    <a href="${resetLink}" target="_blank" rel="noopener noreferrer" style="background:#4f46e5; color:#ffffff; padding:12px 24px; text-decoration:none; font-weight:bold; border-radius:6px; display:inline-block;">Reset Password</a>
+                                                </p>
+                                                <p style="margin:0 0 10px 0;">⚠️ This link will expire in <strong>15 minutes</strong>.</p>
+                                                <p style="margin:0;">If you didn’t request a password reset, you can safely ignore this email.</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="background:#f9fafb; padding:20px 40px; font-size:12px; color:#999; text-align:center; border-top:1px solid #eee;">
+                                                <p style="margin:0;">© ${new Date().getFullYear()} Your Company. All rights reserved.</p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </body>
+                </html>`
         };
 
         // Send email

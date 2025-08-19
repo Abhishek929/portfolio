@@ -94,9 +94,8 @@ export default function EditProfilePage() {
                     <h2 className="edit-profile-title">Edit Profile</h2>
                     <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow-md space-y-4">
                         <div className="profile-avatar">
-                            <img src={formData.image || ProfileImage } alt="Profile" className="avatar-img"/>
                             <label htmlFor="avatarUpload" className="avatar-edit">
-                                <i className="fas fa-pencil-alt"></i>
+                              <img src={formData.image || ProfileImage } alt="Profile" className="avatar-img"/>
                             </label>
 
                             <input type="file" id="avatarUpload" accept="image/*" className="hidden" onChange={(e) =>
@@ -104,32 +103,32 @@ export default function EditProfilePage() {
                                 }
                             />
                         </div>
-                        <div>
+                        <div className="edit-profile">
                             <label className="block text-sm font-medium">First Name</label>
                             <input type="text" name="firstname" value={formData.firstname} onChange={handleChange} className="first-name-input"/>
                         </div>
 
-                        <div>
+                        <div className="edit-profile">
                             <label className="block text-sm font-medium">Last Name</label>
                             <input type="text" name="lastname" value={formData.lastname} onChange={handleChange} className="last-name-input"/>
                         </div>
 
-                        <div>
+                        <div className="edit-profile">
                             <label className="block text-sm font-medium">Email</label>
-                            <input type="email" name="email" value={formData.email} onChange={handleChange} className="email-input"/>
+                            <input type="email" name="email" value={formData.email} onChange={handleChange} className="email-input" readOnly/>
                         </div>
 
-                        <div>
+                        <div className="edit-profile">
                             <label className="block text-sm font-medium">Phone</label>
                             <input type="text" name="phone" value={formData.phone} onChange={handleChange} className="phone-input"/>
                         </div>
 
-                        <div>
+                        <div className="edit-profile">
                             <label className="block text-sm font-medium">Date of Birth</label>
                             <input type="date" name="dob" value={formData.dob} onChange={handleChange} className="date-input"/>
                         </div>
 
-                        <div>
+                        <div className="edit-profile">
                             <label className="block text-sm font-medium">Gender</label>
                             <select name="gender" value={formData.gender} onChange={handleChange} className="gender-select">
                                 <option value="">Select Gender</option>
@@ -138,7 +137,7 @@ export default function EditProfilePage() {
                             </select>
                         </div>
 
-                        <div>
+                        <div className="edit-profile">
                             <label className="block text-sm font-medium">Address</label>
                             <textarea name="address" value={formData.address} onChange={handleChange} className="address-textarea"/>
                         </div>
