@@ -10,12 +10,11 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-// Middleware
-app.use(cors({ origin: "https://portfolio-abhi-six.vercel.app/" }));
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    next();
-});
+// CORS Middleware
+app.use(cors({
+    origin: "https://portfolio-abhi-six.vercel.app", // no trailing slash
+    credentials: true, // if you need cookies/authorization headers
+}));
 
 app.use(express.json());
 
