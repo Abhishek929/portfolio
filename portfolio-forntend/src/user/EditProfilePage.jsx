@@ -99,6 +99,7 @@ export default function EditProfilePage() {
                             <label htmlFor="avatarUpload" className="avatar-edit">
                                 <i className="fas fa-pencil-alt"></i>
                             </label>
+                            
                             <input type="file" id="avatarUpload" accept="image/*" className="hidden" onChange={(e) =>
                                 setFormData({ ...formData, image: URL.createObjectURL(e.target.files[0]) })
                                 }
