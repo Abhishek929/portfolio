@@ -11,7 +11,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 // Middleware
-app.use(cors({ origin: "https://portfolio-ui-phi.vercel.app" }));
+app.use(cors({ origin: "https://portfolio-abhi-six.vercel.app/" }));
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     next();
