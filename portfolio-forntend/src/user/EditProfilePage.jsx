@@ -77,7 +77,7 @@ export default function EditProfilePage() {
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: formData,
+          body: JSON.stringify(formData),
         }
       );
 
