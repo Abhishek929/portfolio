@@ -30,7 +30,7 @@ router.get("/get-users", GetUsers);
 // Get user by ID
 router.get("/get-user/:id", GetUserById);
 
-// Update user
+// Update user (with image upload)
 router.put("/update-user/:id", upload.single("image"), UpdateUser);
 
 // Delete user

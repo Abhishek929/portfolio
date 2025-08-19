@@ -2,6 +2,7 @@ import multer from "multer";
 import path from "path";
 import fs from "fs";
 
+// Uploads folder ka path
 const uploadDir = path.join(process.cwd(), "uploads");
 
 // Agar folder nahi hai to create kar do
@@ -12,14 +13,15 @@ if (!fs.existsSync(uploadDir)) {
 // Storage config
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/"); // folder where images will be stored
+    cb(null, uploadDir); // yahan absolute path dena zaruri hai
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname)); // unique filename
+    const uniqueName = Date.now() + path.extname(file.originalname);
+    cb(null, uniqueName);
   },
 });
 
-// File filter (optional: only images)
+// File filter (optional)
 const fileFilter = (req, file, cb) => {
   if (file.mimetype.startsWith("image/")) {
     cb(null, true);
