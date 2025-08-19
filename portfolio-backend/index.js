@@ -5,7 +5,7 @@ import authRouter from "./Routes/authRoutes.js";
 import connectDB from "./Config/db_connect.js";
 import cors from "cors";
 import contactRoutes from "./Routes/contactRoutes.js";
-import path from "path";
+// import path from "path";
 dotenv.config();
 
 const app = express();
@@ -26,7 +26,7 @@ connectDB();
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/contact", contactRoutes);
-app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
+// app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
 app.get("/", (req, res) => {
     res.send("Welcome to the Portfolio Backend API");
