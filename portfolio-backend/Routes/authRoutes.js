@@ -31,7 +31,7 @@ router.get("/get-users", GetUsers);
 router.get("/get-user/:id", GetUserById);
 
 // Update user
-router.put("/update-user/:id", upload.single('image'), UpdateUser);
+router.put("/update-user/:id", upload, UpdateUser);
 
 // Delete user
 router.delete("/delete-user/:id", DeleteUser);
