@@ -227,7 +227,7 @@ export const UpdateUser = async (req, res) => {
     if (!user) return res.status(404).json({ message: "User not found" });
 
     // Update allowed fields
-    const { role, firstname, lastname, dob, address, phone, gender, image } = req.body;
+    const { role, firstname, lastname, dob, address, phone, gender } = req.body;
 
     if (firstname) user.firstname = firstname;
     if (lastname) user.lastname = lastname;
@@ -235,7 +235,11 @@ export const UpdateUser = async (req, res) => {
     if (address) user.address = address;
     if (phone) user.phone = phone;
     if (gender) user.gender = gender;
-    if (image) user.image = image;
+
+    // Save uploaded image path
+    if (req.file) {
+        user.image = `/uploads/${req.file.filename}`;
+    }
 
     // Role update only if requester is admin
     if (role) {

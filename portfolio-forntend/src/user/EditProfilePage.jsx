@@ -22,6 +22,7 @@ export default function EditProfilePage() {
   const [error, setError] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
+  const [selectedFile, setSelectedFile] = useState(null);
 
   useEffect(() => {
     fetchProfile();
@@ -58,6 +59,19 @@ export default function EditProfilePage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+
+      const form = new FormData();
+      form.append("firstname", formData.firstname);
+      form.append("lastname", formData.lastname);
+      form.append("dob", formData.dob);
+      form.append("address", formData.address);
+      form.append("phone", formData.phone);
+      form.append("gender", formData.gender);
+
+      if (selectedFile) {
+        form.append("image", selectedFile); // actual file goes here
+      }
+
       const res = await fetch(
         `https://portfolio-rosy-five-54.vercel.app/api/auth/update-user/${id}`,
         {
@@ -98,9 +112,13 @@ export default function EditProfilePage() {
                               <img src={formData.image || ProfileImage } alt="Profile" className="avatar-img"/>
                             </label>
 
-                            <input type="file" id="avatarUpload" accept="image/*" className="hidden" onChange={(e) =>
-                                setFormData({ ...formData, image: URL.createObjectURL(e.target.files[0]) })
+                            <input type="file" id="avatarUpload" accept="image/*" className="hidden" onChange={(e) => {
+                                const file = e.target.files[0];
+                                setSelectedFile(file);
+                                if (file) {
+                                  setFormData({ ...formData, image: URL.createObjectURL(file) }); // preview only
                                 }
+                              }}
                             />
                         </div>
                         <div className="edit-profile">
