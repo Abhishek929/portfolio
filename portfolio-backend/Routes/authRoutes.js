@@ -8,7 +8,6 @@ import {SignupUser,
     UpdateUser, 
     DeleteUser } from '../Controllers/authController.js';
 import checkDuplicateUsernameOrEmail from "../Middlewares/verifyUser.js";
-import upload from '../Config/multer.js';
 
 const router = express.Router();
 
@@ -31,7 +30,7 @@ router.get("/get-users", GetUsers);
 router.get("/get-user/:id", GetUserById);
 
 // Update user
-router.put("/update-user/:id", upload, UpdateUser);
+router.put("/update-user/:id", upload.single("image"), UpdateUser);
 
 // Delete user
 router.delete("/delete-user/:id", DeleteUser);
