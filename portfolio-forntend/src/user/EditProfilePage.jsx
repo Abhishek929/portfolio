@@ -77,13 +77,12 @@ export default function EditProfilePage() {
         form.append("image", image); // multer expects "image"
       }
 
-      const res = await fetch(
-        `https://portfolio-rosy-five-54.vercel.app/api/auth/update-user/${id}`,
-        {
+      const API_BASE = "https://portfolio-rosy-five-54.vercel.app/";
+
+      const res = await fetch(`${API_BASE}/api/auth/update-user/${id}`, {
           method: "PUT",
           body: form,
-        }
-      );
+      });
 
       if (!res.ok) {
         const errData = await res.json().catch(() => ({}));
