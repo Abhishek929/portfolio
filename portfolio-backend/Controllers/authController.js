@@ -2,6 +2,7 @@ import Auth from "../Models/authModels.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import nodemailer from "nodemailer";
+import { v2 as cloudinary } from "cloudinary";
 
 const JWT_SECRET = process.env.JWT_SECRET || "yoursecretkey"; // Keep this in .env
 
@@ -222,14 +223,11 @@ export const GetUserById = async (req, res) => {
 // Update user
 export const UpdateUser = async (req, res) => {
   try {
-    // Find the user by ID
     const user = await Auth.findById(req.params.id);
     if (!user) return res.status(404).json({ message: "User not found" });
 
-    // Fields from body
     const { username, email, role, firstname, lastname, dob, address, phone, gender } = req.body;
 
-    // Update user fields
     if (username) user.username = username;
     if (email) user.email = email;
     if (firstname) user.firstname = firstname;
@@ -239,9 +237,24 @@ export const UpdateUser = async (req, res) => {
     if (phone) user.phone = phone;
     if (gender) user.gender = gender;
 
-    // Image update (agar naya image upload hua hai to)
+    // Upload to Cloudinary if image exists
     if (req.file) {
-      user.image = `/uploads/${req.file.filename}`;
+        const uploadResult = await cloudinary.uploader.upload_stream(
+            { folder: "portfolio-users" },
+            async (error, result) => {
+                if (error) {
+                    console.error("Cloudinary upload error:", error);
+                    return res.status(500).json({ error: "Image upload failed" });
+                }
+                user.image = result.secure_url; // Save Cloudinary URL
+                await user.save();
+                return res.json({ message: "User updated successfully", user });
+            }
+        );
+
+      // Pipe buffer to Cloudinary
+      uploadResult.end(req.file.buffer);
+      return;
     }
 
     // Role update only if admin
@@ -252,7 +265,7 @@ export const UpdateUser = async (req, res) => {
     await user.save();
     res.json({ message: "User updated successfully", user });
   } catch (err) {
-    console.error(err); // Debug ke liye console me print karo
+    console.error(err);
     res.status(500).json({ error: "Internal Server Error", details: err.message });
   }
 };

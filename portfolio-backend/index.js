@@ -6,6 +6,7 @@ import connectDB from "./Config/db_connect.js";
 import cors from "cors";
 import contactRoutes from "./Routes/contactRoutes.js";
 import path from "path";
+import connectCloudinary from "./Config/cloudinary.js";
 dotenv.config();
 
 const app = express();
@@ -22,6 +23,8 @@ app.use(express.json());
 
 // Connect to DB
 connectDB();
+// Cloudinary configuration
+connectCloudinary();
 
 // Routes
 app.use("/api/user", userRouter);
