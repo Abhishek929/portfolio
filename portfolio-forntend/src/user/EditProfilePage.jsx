@@ -153,7 +153,7 @@ function EditProfileForm({
         <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow-md space-y-4">
           <div className="profile-avatar">
             <label htmlFor="avatarUpload" className="avatar-edit">
-              <img src={image ? URL.createObjectURL(image) : (formData.image || ProfileImage)} alt="Profile" className="avatar-img" />
+              <img src={image ? URL.createObjectURL(image) : formData.image || ProfileImage } alt="Profile" className="avatar-img" />
             </label>
             <input type="file" id="avatarUpload" accept="image/*" className="hidden" onChange={handleImageChange} />
           </div>
