@@ -19,6 +19,7 @@ import NotificationsPage from './admin/NotificationsPage';
 import ProfilePage from './user/ProfilePage';
 import EditProfilePage from './user/EditProfilePage';
 
+const BackendUrl = "https://portfolio-rosy-five-54.vercel.app";
 function App() {
   
   return (
@@ -51,4 +52,4 @@ function App() {
   )
 }
 
-export default App
+export {App, BackendUrl}; // Export BackendUrl for use in other components

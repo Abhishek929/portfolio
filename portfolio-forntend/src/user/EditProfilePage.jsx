@@ -77,12 +77,13 @@ export default function EditProfilePage() {
         form.append("image", image); // multer expects "image"
       }
 
-      const API_BASE = "https://portfolio-rosy-five-54.vercel.app";
+      const API_BASE = "https://portfolio-rosy-five-54.vercel.app/";
 
       const res = await fetch(`${API_BASE}/api/auth/update-user/${id}`, {
-          method: "PUT",
-          body: form,
+        method: "PUT", // ✅ matches router.put
+        body: form,
       });
+
 
       if (!res.ok) {
         const errData = await res.json().catch(() => ({}));
@@ -100,69 +101,69 @@ export default function EditProfilePage() {
 
   return (
     <div className="profile-dashboard flex">
-        {/* Sidebar */}
-        <div className="sidebar-container">
-            <Sidebar />
+      {/* Sidebar */}
+      <div className="sidebar-container">
+        <Sidebar />
+      </div>
+
+      {/* Main */}
+      <div className="profile-main flex-1">
+        <AdminHeader />
+        <div className="profile-content">
+          <ToastContainer />
+          <div className="profile-card">
+            <h2 className="edit-profile-title">Edit Profile</h2>
+            <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow-md space-y-4">
+              <div className="profile-avatar">
+                <label htmlFor="avatarUpload" className="avatar-edit">
+                  <img src={image ? URL.createObjectURL(image) : (formData.image || ProfileImage)} alt="Profile" className="avatar-img" />
+                </label>
+                <input type="file" id="avatarUpload" accept="image/*" className="hidden" onChange={handleImageChange} />
+              </div>
+              <div className="edit-profile">
+                <label className="block text-sm font-medium">First Name</label>
+                <input type="text" name="firstname" value={formData.firstname} onChange={handleChange} className="first-name-input" />
+              </div>
+
+              <div className="edit-profile">
+                <label className="block text-sm font-medium">Last Name</label>
+                <input type="text" name="lastname" value={formData.lastname} onChange={handleChange} className="last-name-input" />
+              </div>
+
+              <div className="edit-profile">
+                <label className="block text-sm font-medium">Email</label>
+                <input type="email" name="email" value={formData.email} onChange={handleChange} className="email-input" readOnly />
+              </div>
+
+              <div className="edit-profile">
+                <label className="block text-sm font-medium">Phone</label>
+                <input type="text" name="phone" value={formData.phone} onChange={handleChange} className="phone-input" />
+              </div>
+
+              <div className="edit-profile">
+                <label className="block text-sm font-medium">Date of Birth</label>
+                <input type="date" name="dob" value={formData.dob} onChange={handleChange} className="date-input" />
+              </div>
+
+              <div className="edit-profile">
+                <label className="block text-sm font-medium">Gender</label>
+                <select name="gender" value={formData.gender} onChange={handleChange} className="gender-select">
+                  <option value="">Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+
+              <div className="edit-profile">
+                <label className="block text-sm font-medium">Address</label>
+                <textarea name="address" value={formData.address} onChange={handleChange} className="address-textarea" />
+              </div>
+
+              <button type="submit" className="save-button">Save Changes</button>
+            </form>
+          </div>
         </div>
-
-        {/* Main */}
-        <div className="profile-main flex-1">
-            <AdminHeader />
-            <div className="profile-content">
-                <ToastContainer />
-                <div className="profile-card">
-                    <h2 className="edit-profile-title">Edit Profile</h2>
-                    <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow-md space-y-4">
-                        <div className="profile-avatar">
-                            <label htmlFor="avatarUpload" className="avatar-edit">
-                              <img src={image ? URL.createObjectURL(image) : (formData.image || ProfileImage)} alt="Profile" className="avatar-img"/>
-                            </label>
-                            <input type="file" id="avatarUpload" accept="image/*" className="hidden" onChange={handleImageChange}/>
-                        </div>
-                        <div className="edit-profile">
-                            <label className="block text-sm font-medium">First Name</label>
-                            <input type="text" name="firstname" value={formData.firstname} onChange={handleChange} className="first-name-input"/>
-                        </div>
-
-                        <div className="edit-profile">
-                            <label className="block text-sm font-medium">Last Name</label>
-                            <input type="text" name="lastname" value={formData.lastname} onChange={handleChange} className="last-name-input"/>
-                        </div>
-
-                        <div className="edit-profile">
-                            <label className="block text-sm font-medium">Email</label>
-                            <input type="email" name="email" value={formData.email} onChange={handleChange} className="email-input" readOnly/>
-                        </div>
-
-                        <div className="edit-profile">
-                            <label className="block text-sm font-medium">Phone</label>
-                            <input type="text" name="phone" value={formData.phone} onChange={handleChange} className="phone-input"/>
-                        </div>
-
-                        <div className="edit-profile">
-                            <label className="block text-sm font-medium">Date of Birth</label>
-                            <input type="date" name="dob" value={formData.dob} onChange={handleChange} className="date-input"/>
-                        </div>
-
-                        <div className="edit-profile">
-                            <label className="block text-sm font-medium">Gender</label>
-                            <select name="gender" value={formData.gender} onChange={handleChange} className="gender-select">
-                                <option value="">Select Gender</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                            </select>
-                        </div>
-
-                        <div className="edit-profile">
-                            <label className="block text-sm font-medium">Address</label>
-                            <textarea name="address" value={formData.address} onChange={handleChange} className="address-textarea"/>
-                        </div>
-
-                        <button type="submit" className="save-button">Save Changes</button>
-                    </form>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
   );
 }
