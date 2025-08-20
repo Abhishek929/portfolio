@@ -252,14 +252,15 @@ export const UpdateUser = async (req, res) => {
         //         }
         //     );
 
-        // // Pipe buffer to Cloudinary
-        // uploadResult.end(req.file.buffer);
-        // return;
+        //     // Pipe buffer to Cloudinary
+        //     uploadResult.end(req.file.buffer);
+        //     return;
         // }
 
+        // Upload to Cloudinary if image exists
         if (req.file) {
-            const cloudinaryUpload = () =>
-                new Promise((resolve, reject) => {
+            try {
+                const result = await new Promise((resolve, reject) => {
                     const stream = cloudinary.uploader.upload_stream(
                         { folder: "portfolio-users" },
                         (error, result) => {
@@ -270,11 +271,17 @@ export const UpdateUser = async (req, res) => {
                         resolve(result);
                         }
                     );
-                    stream.end(req.file.buffer);
+                    stream.end(req.file.buffer); // send file buffer to Cloudinary
                 });
 
-            const result = await cloudinaryUpload();
-            user.image = result.secure_url;
+                user.image = result.secure_url;
+                await user.save();
+
+                return res.json({ message: "User updated successfully", user });
+            } catch (uploadErr) {
+                console.error("Upload failed:", uploadErr);
+                return res.status(500).json({ error: "Image upload failed", details: uploadErr.message });
+            }
         }
 
         // Role update only if admin
