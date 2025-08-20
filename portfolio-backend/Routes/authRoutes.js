@@ -1,4 +1,5 @@
 import express from 'express';
+import upload from '../Middlewares/multer.js';
 import {SignupUser, 
     LoginUser, 
     forgotPassword, 
@@ -8,8 +9,6 @@ import {SignupUser,
     UpdateUser, 
     DeleteUser } from '../Controllers/authController.js';
 import checkDuplicateUsernameOrEmail from "../Middlewares/verifyUser.js";
-import upload from '../Middlewares/multer.js';
-import multer from 'multer';
 
 const router = express.Router();
 
