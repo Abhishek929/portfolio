@@ -238,23 +238,43 @@ export const UpdateUser = async (req, res) => {
         if (gender) user.gender = gender;
 
         // Upload to Cloudinary if image exists
-        if (req.file) {
-            const uploadResult = await cloudinary.uploader.upload_stream(
-                { folder: "portfolio-users" },
-                async (error, result) => {
-                    if (error) {
-                        console.error("Cloudinary upload error:", error);
-                        return res.status(500).json({ error: "Image upload failed" });
-                    }
-                    user.image = result.secure_url; // Save Cloudinary URL
-                    await user.save();
-                    return res.json({ message: "User updated successfully", user });
-                }
-            );
+        // if (req.file) {
+        //     const uploadResult = await cloudinary.uploader.upload_stream(
+        //         { folder: "portfolio-users" },
+        //         async (error, result) => {
+        //             if (error) {
+        //                 console.error("Cloudinary upload error:", error);
+        //                 return res.status(500).json({ error: "Image upload failed" });
+        //             }
+        //             user.image = result.secure_url; // Save Cloudinary URL
+        //             await user.save();
+        //             return res.json({ message: "User updated successfully", user });
+        //         }
+        //     );
 
-        // Pipe buffer to Cloudinary
-        uploadResult.end(req.file.buffer);
-        return;
+        // // Pipe buffer to Cloudinary
+        // uploadResult.end(req.file.buffer);
+        // return;
+        // }
+
+        if (req.file) {
+            const cloudinaryUpload = () =>
+                new Promise((resolve, reject) => {
+                    const stream = cloudinary.uploader.upload_stream(
+                        { folder: "portfolio-users" },
+                        (error, result) => {
+                        if (error) {
+                            console.error("Cloudinary upload error:", error);
+                            return reject(error);
+                        }
+                        resolve(result);
+                        }
+                    );
+                    stream.end(req.file.buffer);
+                });
+
+            const result = await cloudinaryUpload();
+            user.image = result.secure_url;
         }
 
         // Role update only if admin
