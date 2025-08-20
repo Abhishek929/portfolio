@@ -16,7 +16,8 @@ const SignupForm = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const res = await fetch("https://portfolio-rosy-five-54.vercel.app/api/auth/sign-up", {
+      const API_BASE = "https://portfolio-backend-olive-five.vercel.app";
+      const res = await fetch(`${API_BASE}/api/auth/sign-up`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form)

@@ -24,7 +24,8 @@ const ResetPasswordForm = () => {
     }
 
     try {
-      const res = await fetch(`https://portfolio-rosy-five-54.vercel.app/api/auth/reset-password?token=${token}`, {
+      const API_BASE = "https://portfolio-backend-olive-five.vercel.app";
+      const res = await fetch(`${API_BASE}/api/auth/reset-password?token=${token}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ password })

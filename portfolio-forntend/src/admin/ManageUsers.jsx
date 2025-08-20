@@ -15,10 +15,11 @@ export default function ManageUsers() {
   useEffect(() => {
     fetchUsers()
   }, [])
-
+  
+  const API_BASE = "https://portfolio-backend-olive-five.vercel.app";
   const fetchUsers = async () => {
     try {
-      const res = await fetch('https://portfolio-rosy-five-54.vercel.app/api/auth/get-users')
+      const res = await fetch(`${API_BASE}/api/auth/get-users`)
       if (!res.ok) throw new Error('Failed to fetch users')
       const data = await res.json()
       setUsers(data)
@@ -34,7 +35,7 @@ export default function ManageUsers() {
 
     try {
       const res = await fetch(
-        `https://portfolio-rosy-five-54.vercel.app/api/auth/delete-user/${id}`,
+        `${API_BASE}/api/auth/delete-user/${id}`,
         {
           method: 'DELETE',
         },

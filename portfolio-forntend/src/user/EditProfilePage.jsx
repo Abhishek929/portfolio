@@ -33,10 +33,12 @@ export default function EditProfilePage() {
     setImage(e.target.files[0]);
   };
 
+  const API_BASE = "https://portfolio-backend-olive-five.vercel.app";
+
   const fetchProfile = async () => {
     try {
       const res = await fetch(
-        `https://portfolio-rosy-five-54.vercel.app/api/auth/get-user/${id}`
+        `${API_BASE}/api/auth/get-user/${id}`
       );
       if (!res.ok) throw new Error("Failed to load profile");
       const data = await res.json();
@@ -77,7 +79,7 @@ export default function EditProfilePage() {
         form.append("image", image); // multer expects "image"
       }
 
-      const API_BASE = "https://portfolio-rosy-five-54.vercel.app/";
+      
 
       const res = await fetch(`${API_BASE}/api/auth/update-user/${id}`, {
         method: "PUT", // ✅ matches router.put

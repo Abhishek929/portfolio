@@ -28,7 +28,8 @@ const ContactForm = () => {
     setError('');
 
     try {
-      const response = await fetch("https://portfolio-rosy-five-54.vercel.app/api/contact/create", {
+      const API_BASE = "https://portfolio-backend-olive-five.vercel.app";
+      const response = await fetch(`${API_BASE}/api/contact/create`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

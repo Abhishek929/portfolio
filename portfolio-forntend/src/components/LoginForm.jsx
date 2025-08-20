@@ -4,7 +4,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from '../components/Navbar';
 import './Login.css';
-import { BackendUrl } from '../App'; // Import BackendUrl from App.jsx
 const LoginForm = () => {
     const [form, setForm] = useState({ identifier: "", password: "" });
     const navigate = useNavigate();
@@ -23,8 +22,8 @@ const LoginForm = () => {
     const handleSubmit = async e => {
         e.preventDefault();
         try {
-            // const res = await fetch("https://portfolio-rosy-five-54.vercel.app/api/auth/login", {
-            const res = await fetch(BackendUrl + "/api/auth/login", {
+            const API_BASE = "https://portfolio-backend-olive-five.vercel.app";
+            const res = await fetch(`${API_BASE}/api/auth/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(form)

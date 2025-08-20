@@ -7,12 +7,12 @@ export default function ContactsPage() {
   const [contacts, setContacts] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
-
+  const API_BASE = "https://portfolio-backend-olive-five.vercel.app";
   useEffect(() => {
     const fetchContacts = async () => {
       try {
         const res = await fetch(
-          'https://portfolio-rosy-five-54.vercel.app/api/contact/all-contacts',
+          `${API_BASE}/api/contact/all-contacts`,
         )
         if (!res.ok) {
           throw new Error('Failed to fetch contacts')

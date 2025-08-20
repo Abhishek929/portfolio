@@ -18,6 +18,8 @@ export default function AccountPage() {
     fetchUser();
   }, []);
 
+  const API_BASE = "https://portfolio-backend-olive-five.vercel.app";
+
   const fetchUser = async () => {
     try {
       // ✅ get userId from localStorage / auth context
@@ -25,7 +27,7 @@ export default function AccountPage() {
       if (!userId) throw new Error("User not logged in");
 
       const res = await fetch(
-        `https://portfolio-rosy-five-54.vercel.app/api/auth/get-user/${userId}`
+        `${API_BASE}/api/auth/get-user/${userId}`
       );
       if (!res.ok) throw new Error("Failed to fetch user data");
       const data = await res.json();
@@ -53,7 +55,7 @@ export default function AccountPage() {
     try {
       const userId = localStorage.getItem("userId");
       const res = await fetch(
-        `https://portfolio-rosy-five-54.vercel.app/api/auth/update-user/${userId}`,
+        `${API_BASE}/api/auth/update-user/${userId}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },

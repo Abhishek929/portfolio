@@ -26,9 +26,11 @@ export default function ProfilePage() {
 
       const parsedUser = JSON.parse(userId);
       const token = localStorage.getItem("token");
+
+      const API_BASE = "https://portfolio-backend-olive-five.vercel.app";
       
       const res = await fetch(
-        `https://portfolio-rosy-five-54.vercel.app/api/auth/get-user/${parsedUser.id}`,
+        `${API_BASE}/api/auth/get-user/${parsedUser.id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
