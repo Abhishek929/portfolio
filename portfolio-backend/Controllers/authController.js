@@ -221,54 +221,6 @@ export const GetUserById = async (req, res) => {
 };
 
 // Update user
-// export const UpdateUser = async (req, res) => {
-//     try {
-//         const user = await Auth.findById(req.params.id);
-//         if (!user) return res.status(404).json({ message: "User not found" });
-
-//         const { username, email, role, firstname, lastname, dob, address, phone, gender } = req.body;
-
-//         if (username) user.username = username;
-//         if (email) user.email = email;
-//         if (firstname) user.firstname = firstname;
-//         if (lastname) user.lastname = lastname;
-//         if (dob) user.dob = dob;
-//         if (address) user.address = address;
-//         if (phone) user.phone = phone;
-//         if (gender) user.gender = gender;
-
-//         // Upload to Cloudinary if image exists
-//         if (req.file) {
-//             const uploadResult = cloudinary.uploader.upload_stream(
-//                 { folder: "upload" },
-//                 async (error, result) => {
-//                     if (error) {
-//                         console.error("Cloudinary upload error:", error);
-//                         return res.status(500).json({ error: "Image upload failed" });
-//                     }
-//                     user.image = result.secure_url; // Save Cloudinary URL
-//                     await user.save();
-//                     return res.json({ message: "User updated successfully", user });
-//                 }
-//             );
-
-//             // Pipe buffer to Cloudinary
-//             uploadResult.end(req.file.buffer);
-//             return;
-//         }
-
-//         // Role update only if admin
-//         if (role) {
-//             user.role = role;
-//         }
-
-//         await user.save();
-//         res.json({ message: "User updated successfully", user });
-//     } catch (err) {
-//         console.error(err);
-//         res.status(500).json({ error: "Internal Server Error", details: err.message });
-//     }
-// };
 export const UpdateUser = async (req, res) => {
   try {
     const user = await Auth.findById(req.params.id);

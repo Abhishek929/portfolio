@@ -20,6 +20,10 @@ import ProfilePage from './user/ProfilePage';
 import EditProfilePage from './user/EditProfilePage';
 
 function App() {
+
+  // Get role from localStorage
+  const storedUser = localStorage.getItem("user");
+  const role = storedUser ? JSON.parse(storedUser).role : null;
   
   return (
     <>
@@ -36,15 +40,28 @@ function App() {
           <Route path="/reset-password" element={<ResetPasswordForm />} />
 
           { /* Admin routes are handled in AdminRoutes.jsx, so no need to define them here */}
-          <Route path="/admin" element={<AdminPage />} />
-          <Route path="/admin/manage-users" element={<ManageUsers />} />
-          <Route path="/admin/site-settings" element={<SiteSettings />} />
-          <Route path="/admin/reports" element={<Reports />} />
-          <Route path="/admin/contacts" element={<ContactsPage />} />
-          <Route path="/admin/edit-user/:id" element={<EditUser />} />
-          <Route path="/admin/profile" element={<ProfilePage />} />
-          <Route path="/admin/edit-profile/:id" element={<EditProfilePage />} />
-          <Route path="/admin/notifications" element={<NotificationsPage />} />
+          {/* Admin routes */}
+          {role === "admin" && (
+            <>
+              <Route path="/admin" element={<AdminPage />} />
+              <Route path="/admin/manage-users" element={<ManageUsers />} />
+              <Route path="/admin/site-settings" element={<SiteSettings />} />
+              <Route path="/admin/reports" element={<Reports />} />
+              <Route path="/admin/contacts" element={<ContactsPage />} />
+              <Route path="/admin/edit-user/:id" element={<EditUser />} />
+              <Route path="/admin/profile" element={<ProfilePage />} />
+              <Route path="/admin/edit-profile/:id" element={<EditProfilePage />} />
+              <Route path="/admin/notifications" element={<NotificationsPage />} />
+            </>
+            )}
+
+            {/* User routes */}
+            {role === "user" && (
+              <>
+                <Route path="/my-account" element={<ProfilePage />} />
+                <Route path="/edit-profile/:id" element={<EditProfilePage />} />
+              </>
+            )}
         </Routes>
       </Router>
     </>
