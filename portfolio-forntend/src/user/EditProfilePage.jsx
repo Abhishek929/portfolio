@@ -84,7 +84,6 @@ export default function EditProfilePage() {
         body: form,
       });
 
-
       if (!res.ok) {
         const errData = await res.json().catch(() => ({}));
         throw new Error(errData.error || "Failed to update profile");
