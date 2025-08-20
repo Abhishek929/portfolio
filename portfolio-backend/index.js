@@ -13,11 +13,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 // CORS Middleware
-app.use(cors({
-  origin: "https://portfolio-abhi-six.vercel.app", // frontend domain
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization"]
-}));
+app.use(cors({ origin: "*" }));
 
 app.use(express.json());
 
