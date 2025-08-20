@@ -126,7 +126,7 @@ function ProfileCard({ user, navigate }) {
             navigate(
               user.role === "admin"
               ? `/admin/edit-profile/${user._id}`
-              : `/my-account/edit-profile/${user._id}`
+              : `/edit-profile/${user._id}`
             )
           }>
           Edit Profile
