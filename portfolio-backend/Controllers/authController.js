@@ -259,7 +259,7 @@ export const UpdateUser = async (req, res) => {
 
         // Role update only if admin
         if (role) {
-        user.role = role;
+            user.role = role;
         }
 
         await user.save();

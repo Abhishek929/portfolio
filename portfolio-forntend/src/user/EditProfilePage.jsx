@@ -85,7 +85,10 @@ export default function EditProfilePage() {
         }
       );
 
-      if (!res.ok) throw new Error("Failed to update profile");
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        throw new Error(errData.error || "Failed to update profile");
+      }
       toast.success("Profile updated successfully!");
       setTimeout(() => navigate(`/admin/profile`), 2000); // redirect after update
     } catch (err) {
