@@ -79,7 +79,7 @@ export default function EditProfilePage() {
 
       const API_BASE = "https://portfolio-rosy-five-54.vercel.app";
 
-      const res = await fetch(`${API_BASE}/api/auth/update-user/${id}`, {
+      const res = await fetch(`${API_BASE}/api/auth/update-user/68a42104ea9b69fad0f5eeb7`, {
           method: "PUT",
           body: form,
       });
