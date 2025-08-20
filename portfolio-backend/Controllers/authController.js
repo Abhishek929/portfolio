@@ -281,7 +281,6 @@ export const UpdateUser = async (req, res) => {
     if (firstname) user.firstname = firstname;
     if (lastname) user.lastname = lastname;
     if (dob) user.dob = dob;
-    
     if (address) user.address = address;
     if (phone) user.phone = phone;
     if (gender) user.gender = gender;
