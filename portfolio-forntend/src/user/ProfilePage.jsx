@@ -122,7 +122,13 @@ function ProfileCard({ user, navigate }) {
       </div>
 
       <div className="text-center">
-        <button className="profile-btn" onClick={() => navigate(`/admin/edit-profile/${user._id}`)}>
+        <button className="profile-btn" onClick={() =>
+            navigate(
+              user.role === "admin"
+              ? `/admin/edit-profile/${user._id}`
+              : `/my-account/edit-profile/${user._id}`
+            )
+          }>
           Edit Profile
         </button>
       </div>
