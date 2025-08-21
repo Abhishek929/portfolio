@@ -70,7 +70,7 @@ export default function ProfilePage() {
         </div>
 
         {/* Footer should always be visible */}
-        <Footer />
+        {user?.role === "user" && <Footer />}
       </div>
     </div>
   );
