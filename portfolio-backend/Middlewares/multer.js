@@ -1,18 +1,17 @@
 import multer from "multer";
-import path from "path";
 
-// configure storage
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "./uploads"); // folder to store files
+    cb(null, "./uploads");
   },
   filename: (req, file, cb) => {
-    // use timestamp + original extension
-    cb(null, Date.now() + path.extname(file.originalname));
+    cb(null, Date.now() + "-" + file.originalname);
   },
 });
 
-// multer instance
-const upload = multer({ storage });
+const upload = multer({
+  storage,
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5 MB
+});
 
 export default upload;
