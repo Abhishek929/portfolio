@@ -24,40 +24,39 @@ export default function EditProfilePage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [image, setImage] = useState(null);
+  const API_BASE = "https://portfolio-backend-olive-five.vercel.app";
 
   useEffect(() => {
-    fetchProfile();
-  }, [id]);
+    const fetchProfile = async () => {
+      try {
+        const res = await fetch(
+          `${API_BASE}/api/auth/get-user/${id}`
+        );
+        if (!res.ok) throw new Error("Failed to load profile");
+        const data = await res.json();
+        setFormData({
+          firstname: data.firstname || "",
+          lastname: data.lastname || "",
+          email: data.email || "",
+          image: data.image || "",
+          dob: data.dob ? new Date(data.dob).toISOString().split("T")[0] : "",
+          address: data.address || "",
+          phone: data.phone || "",
+          gender: data.gender || "",
+        });
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (id) fetchProfile();
+  }, [id, API_BASE]); // no ESLint warning now
 
   // Handle image input
   const handleImageChange = (e) => {
     setImage(e.target.files[0]);
-  };
-
-  const API_BASE = "https://portfolio-backend-olive-five.vercel.app";
-
-  const fetchProfile = async () => {
-    try {
-      const res = await fetch(
-        `${API_BASE}/api/auth/get-user/${id}`
-      );
-      if (!res.ok) throw new Error("Failed to load profile");
-      const data = await res.json();
-      setFormData({
-        firstname: data.firstname || "",
-        lastname: data.lastname || "",
-        email: data.email || "",
-        image: data.image || "",
-        dob: data.dob ? new Date(data.dob).toISOString().split("T")[0] : "",
-        address: data.address || "",
-        phone: data.phone || "",
-        gender: data.gender || "",
-      });
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
   };
 
   const handleChange = (e) => {
@@ -67,7 +66,6 @@ export default function EditProfilePage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-
       const form = new FormData();
       form.append("firstname", formData.firstname);
       form.append("lastname", formData.lastname);
@@ -79,8 +77,6 @@ export default function EditProfilePage() {
       if (image) {
         form.append("image", image); // multer expects "image"
       }
-
-      
 
       const res = await fetch(`${API_BASE}/api/auth/update-user/${id}`, {
         method: "PUT", // ✅ matches router.put
