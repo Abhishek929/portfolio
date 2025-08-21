@@ -47,40 +47,34 @@ export default function ProfilePage() {
     }
   };
 
-  if (loading) return <p className="text-center">Loading profile...</p>;
-  if (error) return <p className="text-center text-red-500">{error}</p>;
-
+  
   return (
     <div className="profile-dashboard">
-      {/* Show admin layout */}
+      {/* Show admin sidebar */}
       {user?.role === "admin" && (
-        <>
-          <div className="sidebar-container">
-            <Sidebar />
-          </div>
-          <div className="profile-main">
-            <AdminHeader />
-            <div className="profile-content">
-              <ToastContainer />
-              <ProfileCard user={user} navigate={navigate} />
-            </div>
-          </div>
-        </>
-      )}
-
-      {/* Show user layout */}
-      {user?.role === "user" && (
-        <div className="profile-main flex-1">
-          <Navbar />
-          <div className="profile-content">
-            <ToastContainer />
-            <ProfileCard user={user} navigate={navigate} />
-          </div>
-          <Footer />
+        <div className="sidebar-container">
+          <Sidebar />
         </div>
       )}
+
+      <div className="profile-main">
+        {/* Show role-based header/navbar */}
+        {user?.role === "admin" && <AdminHeader />}
+        {user?.role === "user" && <Navbar />}
+
+        <div className="profile-content">
+          <ToastContainer />
+          {loading && <p className="text-center">Loading profile...</p>}
+          {error && <p className="text-center text-red-500">{error}</p>}
+          {!loading && !error && <ProfileCard user={user} navigate={navigate} />}
+        </div>
+
+        {/* Footer should always be visible */}
+        <Footer />
+      </div>
     </div>
   );
+
 }
 
 // Extract profile card into separate component for reusability
