@@ -4,7 +4,7 @@ import path from "path";
 // configure storage
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/"); // folder to store files
+    cb(null, "./uploads"); // folder to store files
   },
   filename: (req, file, cb) => {
     // use timestamp + original extension
