@@ -49,28 +49,37 @@ export default function ProfilePage() {
 
   return (
     <div className="profile-dashboard">
-      {/* Always show navbar/footer for users */}
-      {user?.role === "user" && <Navbar />}
+      {/* Show admin layout */}
       {user?.role === "admin" && (
-        <div className="sidebar-container">
-          <Sidebar />
-        </div>
+        <>
+          <div className="sidebar-container">
+            <Sidebar />
+          </div>
+          <div className="profile-main">
+            <AdminHeader />
+            <div className="profile-content">
+              <ToastContainer />
+              {loading && <p className="text-center">Loading profile...</p>}
+              {error && <p className="text-center text-red-500">{error}</p>}
+              <ProfileCard user={user} navigate={navigate} />
+            </div>
+          </div>
+        </>
       )}
 
-      <div className="profile-main">
-        {user?.role === "admin" && <AdminHeader />}
-
-        <div className="profile-content">
-          <ToastContainer />
-
-          {loading && <p className="text-center">Loading profile...</p>}
-          {error && <p className="text-center text-red-500">{error}</p>}
-          {!loading && !error && <ProfileCard user={user} navigate={navigate} />}
+      {/* Show user layout */}
+      {user?.role === "user" && (
+        <div className="profile-main flex-1">
+          <Navbar />
+          <div className="profile-content">
+            <ToastContainer />
+            {loading && <p className="text-center">Loading profile...</p>}
+            {error && <p className="text-center text-red-500">{error}</p>}
+            <ProfileCard user={user} navigate={navigate} />
+          </div>
+          <Footer />
         </div>
-
-        {/* Always show footer for users */}
-        {user?.role === "user" && <Footer />}
-      </div>
+      )}
     </div>
   );
 }
