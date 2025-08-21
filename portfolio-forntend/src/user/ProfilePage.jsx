@@ -11,7 +11,7 @@ import "./ProfilePage.css";
 
 export default function ProfilePage() {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [setLoading] = useState(true);
   const [error, setError] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
