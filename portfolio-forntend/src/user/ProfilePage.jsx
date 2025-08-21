@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Sidebar from "../admin/Sidebar";
 import AdminHeader from "../admin/AdminHeader";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { useParams, useNavigate } from "react-router-dom";
 import ProfileImage from "../assets/profile.png";
 import "./ProfilePage.css";
@@ -75,6 +76,7 @@ export default function ProfilePage() {
             <ToastContainer />
             <ProfileCard user={user} navigate={navigate} />
           </div>
+          <Footer />
         </div>
       )}
     </div>
