@@ -4,6 +4,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Sidebar from "../admin/Sidebar";
 import AdminHeader from "../admin/AdminHeader";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { useParams, useNavigate } from "react-router-dom";
 import "./EditProfilePage.css";
 import ProfileImage from "../assets/profile.png";
