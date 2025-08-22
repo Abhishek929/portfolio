@@ -7,6 +7,7 @@ import AdminHeader from "../admin/AdminHeader";
 import { useParams, useNavigate } from "react-router-dom";
 import "./EditProfilePage.css";
 import ProfileImage from "../assets/profile.png";
+import imageCompression from "browser-image-compression";
 
 export default function EditProfilePage() {
   const [formData, setFormData] = useState({
@@ -55,8 +56,21 @@ export default function EditProfilePage() {
   }, [id, API_BASE]); // no ESLint warning now
 
   // Handle image input
-  const handleImageChange = (e) => {
-    setImage(e.target.files[0]);
+  const handleImageChange = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      try {
+        const options = {
+          maxSizeMB: 1, // compress to ~1MB
+          maxWidthOrHeight: 1024,
+          useWebWorker: true,
+        };
+        const compressedFile = await imageCompression(file, options);
+        setImage(compressedFile);
+      } catch (err) {
+        console.error("Image compression error:", err);
+      }
+    }
   };
 
   const handleChange = (e) => {
