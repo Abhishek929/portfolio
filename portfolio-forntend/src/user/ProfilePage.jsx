@@ -47,9 +47,6 @@ export default function ProfilePage() {
     }
   };
 
-  if (loading) return <p className="text-center">Loading profile...</p>;
-  if (error) return <p className="text-center text-red-500">{error}</p>;
-
   return (
     <div className="profile-dashboard">
       {/* Show admin layout */}
@@ -62,7 +59,11 @@ export default function ProfilePage() {
             <AdminHeader />
             <div className="profile-content">
               <ToastContainer />
-              <ProfileCard user={user} navigate={navigate} />
+              {loading && <p>Loading user data...</p>}
+              {error && <p className="error-text">{error}</p>}
+              {!loading && (
+                <ProfileCard user={user} navigate={navigate} />
+              )}
             </div>
           </div>
         </>
@@ -74,7 +75,11 @@ export default function ProfilePage() {
           <Navbar />
           <div className="profile-content">
             <ToastContainer />
-            <ProfileCard user={user} navigate={navigate} />
+            {loading && <p>Loading user data...</p>}
+            {error && <p className="error-text">{error}</p>}
+            {!loading && (
+              <ProfileCard user={user} navigate={navigate} />
+            )}
           </div>
           <Footer />
         </div>
